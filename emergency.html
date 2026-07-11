@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency - Nepal Health Hospital</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <span>Nepal Health</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#0891B2"/>
+                </svg>
+            </div>
+            <nav class="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="departments.html">Departments</a>
+                <a href="find-doctor.html">Doctors</a>
+                <a href="services.html">Services</a>
+                <a href="health-packages.html">Packages</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="navbar-actions">
+                <div class="language-switcher">
+                    EN
+                    <span>|</span>
+                    नेपाली
+                </div>
+                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                <div class="emergency-phone">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#EF4444"/>
+                    </svg>
+                    <span>+977-1-5970032</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sticky Emergency Alert -->
+    <div class="emergency-alert" style="position: sticky; top: 72px; background-color: #fee2e2; /* red-100 */ border-left: 4px solid #ef4444; /* red-500 */ padding: var(--space-3) var(--space-4); display: flex; align-items: center; gap: var(--space-3); z-index: 900;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.25c-0.41 0-0.75 0.34-0.75 0.75v0.01c0 3.06 2.48 5.54 5.58 5.54.21 0 .42-.02.62-.04 1.98-.19 3.59-1.63 3.8-3.59 0-.05 0-.11 0-.16v-7.5c0-1.24-1.02-2.26-2.29-2.26H7.3c-1.27 0-2.29 1.02-2.29 2.26v1.39c0 .04 0 .11 0 .15 0 1.96 1.62 3.56 3.62 3.59.2 0 .41-.02.62.04 3.1 0 5.58-2.48 5.58-5.54v-.01c0-.41-0.34-0.75-0.75-0.75h-3zM12 12.75c-0.41 0-0.75 0.34-0.75 0.75s0.34 0.75 0.75 0.75 0.75-0.34 0.75-0.75-0.34-0.75-0.75-0.75z" fill="#ef4444"/>
+        </svg>
+        <div>
+            <strong>EMERGENCY ALERT:</strong> For life-threatening emergencies, call our 24/7 emergency line immediately.
+        </div>
+        <a href="tel:+97715970099" class="btn btn-danger">CALL EMERGENCY: +977-1-5970099</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-container" style="background-color: var(--background); padding: var(--space-3) var(--space-4);">
+        <div class="container" style="max-width: 1440px; margin: 0 auto;">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator">></span>
+                <span>Emergency Services</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="emergency-alert-sticky" style="position: sticky; top: 72px; background-color: #fee2e2; /* red-100 */ border-left: 4px solid #ef4444; /* red-500 */ padding: var(--space-3) var(--space-4); display: flex; align-items: center; gap: var(--space-3); z-index: 900;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2.25c-0.41 0-0.75 0.34-0.75 0.75v0.01c0 3.06 2.48 5.54 5.58 5.54.21 0 .42-.02.62-.04 1.98-.19 3.59-1.63 3.8-3.59 0-.05 0-.11 0-.16v-7.5c0-1.24-1.02-2.26-2.29-2.26H7.3c-1.27 0-2.29 1.02-2.29 2.26v1.39c0 .04 0 .11 0 .15 0 1.96 1.62 3.56 3.62 3.59.2 0 .41-.02.62.04 3.1 0 5.58-2.48 5.58-5.54v-.01c0-.41-0.34-0.75-0.75-0.75h-3zM12 12.75c-0.41 0-0.75 0.34-0.75 0.75s0.34 0.75 0.75 0.75 0.75-0.34 0.75-0.75-0.34-0.75-0.75-0.75z" fill="#ef4444"/>
+            </svg>
+            <div>
+                <strong>24/7 EMERGENCY SERVICES AVAILABLE</strong> - Our emergency department is open round the clock for all medical emergencies.
+            </div>
+            <a href="tel:+97715970099" class="btn btn-danger">CALL EMERGENCY: +977-1-5970099</a>
+        </section>
+
+        <section class="emergency-hero" style="background: linear-gradient(135deg, #ef4444, #f87171); /* red gradient */ color: var(--surface); text-align: center; padding: var(--space-6) var(--space-4);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <h1>24/7 Emergency & Trauma Care</h1>
+                <p class="subtitle">When every second counts, trust Nepal Health Hospital's emergency services</p>
+                <div class="emergency-actions" style="margin-top: var(--space-4);">
+                    <a href="tel:+97715970099" class="btn btn-white btn-lg">📞 CALL EMERGENCY</a>
+                    <a href="#" class="btn btn-white btn-lg">🚑 REQUEST AMBULANCE</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Cards -->
+        <section class="emergency-services" style="padding: var(--space-6) var(--space-4); background-color: var(--background);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <h2 style="text-align: center; margin-bottom: var(--space-6);">Our Emergency Services</h2>
+                <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-4);">
+                    <!-- Emergency Room -->
+                    <div class="service-card">
+                        <div class="service-icon" style="font-size: 48px; color: var(--emergency); margin-bottom: var(--space-3);">🏥</div>
+                        <h3>Emergency Room (ER)</h3>
+                        <p>Our state-of-the-art emergency department is equipped to handle all types of medical emergencies 24/7, from minor injuries to life-threatening conditions.</p>
+                        <div class="service-features" style="margin-top: var(--space-3);">
+                            <span class="feature-item">✓ Board-certified emergency physicians</span>
+                            <span class="feature-item">✓ Advanced cardiac life support</span>
+                            <span class="feature-item">✓ Stroke and trauma centers</span>
+                            <span class="feature-item">✓ Pediatric emergency care</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Learn More →</a>
+                    </div>
+
+                    <!-- Ambulance Service -->
+                    <div class="service-card">
+                        <div class="service-icon" style="font-size: 48px; color: var(--emergency); margin-bottom: var(--space-3);">🚑</div>
+                        <h3>Ambulance Service</h3>
+                        <p>Our advanced life support ambulances are staffed with paramedics and equipped with critical care equipment to provide emergency medical care during transport.</p>
+                        <div class="service-features" style="margin-top: var(--space-3);">
+                            <span class="feature-item">✓ 8-minute average response time</span>
+                            <span class="feature-item">✓ GPS-tracked ambulances</span>
+                            <span class="feature-item">✓ Advanced life support equipment</span>
+                            <span class="feature-item">✓ Critical care transport</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Learn More →</a>
+                    </div>
+
+                    <!-- Trauma Center -->
+                    <div class="service-card">
+                        <div class="service-icon" style="font-size: 48px; color: var(--emergency); margin-bottom: var(--space-3);">💥</div>
+                        <h3>Trauma Center</h3>
+                        <p>As a designated trauma center, we provide comprehensive care for severely injured patients, from resuscitation through rehabilitation.</p>
+                        <div class="service-features" style="margin-top: var(--space-3);">
+                            <span class="feature-item">✓ Level I trauma certification</span>
+                            <span class="feature-item">✓ 24/7 in-house trauma team</span>
+                            <span class="feature-item">✓ Helicopter landing pad</span>
+                            <span class="feature-item">✓ Rehabilitation services</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- First Aid Tips -->
+        <section class="first-aid-tips" style="padding: var(--space-6) var(--space-4);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <h2 style="text-align: center; margin-bottom: var(--space-6);">First Aid Tips for Emergencies</h2>
+                <div class="accordion">
+                    <!-- Heart Attack -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">❤️ Heart Attack</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Recognize the signs:</strong> Chest pain or discomfort, shortness of breath, nausea, lightheadedness, pain in arms, back, neck, jaw, or stomach.</p>
+                            <p><strong>Immediate actions:</strong></p>
+                            <ul>
+                                <li>Call emergency services immediately (977-1-5970099)</li>
+                                <li>Have the person sit down, rest, and try to stay calm</li>
+                                <li>Loosen any tight clothing</li>
+                                <li>If the person is not allergic to aspirin, give them 325mg to chew slowly</li>
+                                <li>If the person stops breathing, begin CPR if trained</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Stroke -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">🧠 Stroke</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Remember FAST:</strong></p>
+                            <ul>
+                                <li><strong>F</strong>ace drooping - Does one side of the face droop or feel numb?</li>
+                                <li><strong>A</strong>rm weakness - Is one arm weak or numb?</li>
+                                <li><strong>S</strong>peech difficulty - Is speech slurred or hard to understand?</li>
+                                <li><strong>T</strong>ime to call emergency services - If someone shows any of these symptoms, call immediately.</li>
+                            </ul>
+                            <p><strong>Additional signs:</strong> Sudden numbness, confusion, trouble seeing, difficulty walking, severe headache.</p>
+                        </div>
+                    </div>
+
+                    <!-- Burns -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">🔥 Burns</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>For minor burns (first-degree):</strong></p>
+                            <ul>
+                                <li>Cool the burn under cool (not cold) running water for 10-15 minutes</li>
+                                <li>Apply aloe vera gel or moisturizer</li>
+                                <li>Cover with sterile gauze bandage</li>
+                                <li>Take over-the-counter pain reliever if needed</li>
+                            </ul>
+                            <p><strong>For major burns (second/third-degree):</strong></p>
+                            <ul>
+                                <li>Call emergency services immediately</li>
+                                <li>Do NOT remove burnt clothing</li>
+                                <li>Do NOT immerse large severe burns in cold water</li>
+                                <li>Cover with clean, dry cloth or bandage</li>
+                                <li>Watch for signs of shock</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Fractures -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">🦴 Fractures/Broken Bones</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Signs of a fracture:</strong> Intense pain, swelling, bruising, deformity, inability to move the injured area.</p>
+                            <p><strong>First aid steps:</strong></p>
+                            <ul>
+                                <li>Do not move the person unless necessary to avoid further injury</li>
+                                <li>Call emergency services or go to the nearest emergency department</li>
+                                <li>If trained, apply a splint to immobilize the area</li>
+                                <li>Apply ice packs to reduce swelling (not directly on skin)</li>
+                                <li>Elevate the injured area if possible</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Choking -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">🤐 Choking</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Signs of choking:</strong> Inability to speak, difficulty breathing, weak cough, clutching throat, bluish skin color.</p>
+                            <p><strong>First aid for conscious adult/child:</strong></p>
+                            <ul>
+                                <li>Give 5 back blows between the shoulder blades with the heel of your hand</li>
+                                <li>If not effective, give 5 abdominal thrusts (Heimlich maneuver)</li>
+                                <li>Continue alternating 5 back blows and 5 abdominal thrusts until object is dislodged or person becomes unconscious</li>
+                            </ul>
+                            <p><strong>If person becomes unconscious:</strong></p>
+                            <ul>
+                                <li>Call emergency services immediately</li>
+                                <li>Begin CPR with chest compressions</li>
+                                <li>Look for the object in the mouth before each breath</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Allergic Reactions -->
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-title">🤒 Allergic Reactions</span>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Signs of severe allergic reaction (anaphylaxis):</strongylactic shock):</strong> Difficulty breathing, swelling of face/lips/tongue/throat, hives, rapid pulse, dizziness, loss of consciousness.</p>
+                            <p><strong>Immediate actions:</strong></p>
+                            <ul>
+                                <li>Call emergency services immediately</li>
+                                <li>If available, use an epinephrine auto-injector (EpiPen) as directed</li>
+                                <li>Have the person lie flat with legs elevated</li>
+                                <li>Loosen tight clothing and cover with a blanket</li>
+                                <li>If vomiting occurs, turn person on their side to prevent choking</li>
+                                <li>If breathing stops, begin CPR</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ambulance Form -->
+        <section class="ambulance-request" style="background-color: var(--background); padding: var(--space-6) var(--space-4);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <h2 style="text-align: center; margin-bottom: var(--space-6);">Request an Ambulance</h2>
+                <form class="ambulance-form" style="max-width: 600px; margin: 0 auto; background-color: var(--surface); padding: var(--space-6); border-radius: var(--radius-card); box-shadow: var(--shadow-standard);">
+                    <div class="form-group" style="margin-bottom: var(--space-3);">
+                        <label for="patientName" class="form-label">Patient Name *</label>
+                        <input type="text" id="patientName" class="input" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: var(--space-3);">
+                        <label for="patientPhone" class="form-label">Contact Phone Number *</label>
+                        <input type="tel" id="patientPhone" class="input" placeholder="+977" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: var(--space-3);">
+                        <label for="pickupLocation" class="form-label">Pickup Location *</label>
+                        <div class="location-input" style="display: flex; gap: var(--space-2); align-items: center;">
+                            <input type="text" id="pickupLocation" class="input" placeholder="Enter address or location" required>
+                            <button type="button" class="btn btn-outline" id="useCurrentLocation">Use Current Location</button>
+                        </div>
+                        <div id="map-placeholder" style="height: 200px; background-color: var(--border); border-radius: var(--radius-card); margin-top: var(--space-2); display: flex; align-items: center; justify-content: center; color: var(--text-body);">
+                            Map will appear here
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: var(--space-3);">
+                        <label for="destination" class="form-label">Destination Hospital *</label>
+                        <select id="destination" class="input" required>
+                            <option value="">Select Destination</option>
+                            <option value="nepal-health-main">Nepal Health Hospital - Main Campus (Maharajgunj)</option>
+                            <option value="nepal-health-cardio">Nepal Health Hospital - Cardiac Center</option>
+                            <option value="neuro-center">Neurology Specialty Center</option>
+                            <option value="other-hospital">Other Hospital/Facility</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: var(--space-3);">
+                        <label for="emergencyType" class="form-label">Type of Emergency *</label>
+                        <select id="emergencyType" class="input" required>
+                            <option value="">Select Emergency Type</option>
+                            <option value="cardiac">Cardiac/Heart Related</option>
+                            <option value="stroke">Stroke/Neurological</option>
+                            <option value="trauma">Trauma/Injury</option>
+                            <option value="respiratory">Respiratory/Breathing</option>
+                            <option value="obstetric">Pregnancy Related</option>
+                            <option value="pediatric">Pediatric Emergency</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom: var(--space-3);">
+                        <label for="additionalInfo" class="form-label">Additional Information</label>
+                        <textarea id="additionalInfo" class="input" rows="3" placeholder="Any relevant medical information, allergies, medications, etc."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Request Ambulance Now</button>
+                </form>
+                <p class="form-note" style="text-align: center; margin-top: var(--space-3); color: var(--text-body); font-size: var(--body-sm);">
+                    For life-threatening emergencies, please call 977-1-5970099 directly instead of using this form.
+                </p>
+            </div>
+        </section>
+
+        <!-- Location and Map -->
+        <section class="hospital-location" style="padding: var(--space-6) var(--space-4);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <h2 style="text-align: center; margin-bottom: var(--space-6);">Our Location</h2>
+                <div class="location-info" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: start;">
+                    <div class="location-details">
+                        <h3>Nepal Health Hospital - Emergency Department</h3>
+                        <p><strong>Address:</strong> Maharajgunj, Kathmandu, Nepal</p>
+                        <p><strong>Phone:</strong> +977-1-5970099 (Emergency)</p>
+                        <p><strong>Alternate:</strong> +977-1-5970032 (Main Line)</p>
+                        <p><strong>Email:</strong> emergency@nepalhealth.com</p>
+                        <p><strong>Availability:</strong> 24 hours/day, 7 days/week</p>
+                        <p><strong>Landmark:</strong> Near Maharajgunj Chowk, opposite Army Hospital</p>
+                    </div>
+                    <div class="map-container">
+                        <div id="map-placeholder-large" style="width: 100%; height: 400px; background-color: var(--border); border-radius: var(--radius-card); display: flex; align-items: center; justify-content: center; color: var(--text-body);">
+                            Map showing hospital location
+                        </div>
+                        <div style="text-align: center; margin-top: var(--space-2);">
+                            <a href="#" class="btn btn-outline">Get Directions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Help Cards -->
+        <section class="quick-help" style="background-color: var(--background); padding: var(--space-6) var(--space-4);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <h2 style="text-align: center; margin-bottom: var(--space-6);">Quick Help</h2>
+                <div class="help-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-4);">
+                    <!-- Appointments -->
+                    <div class="help-card">
+                        <div class="help-icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">📅</div>
+                        <h3>Appointments</h3>
+                        <p>Schedule routine check-ups and specialist consultations</p>
+                        <a href="appointment-booking.html" class="btn btn-outline">Book Appointment</a>
+                    </div>
+
+                    <!-- Emergency -->
+                    <div class="help-card">
+                        <div class="help-icon" style="font-size: 36px; color: var(--emergency); margin-bottom: var(--space-2);">🚨</div>
+                        <h3>Emergency</h3>
+                        <p>Immediate care for life-threatening conditions</p>
+                        <a href="tel:+97715970099" class="btn btn-danger">Call Emergency</a>
+                    </div>
+
+                    <!-- Reports -->
+                    <div class="help-card">
+                        <div class="help-icon" style="font-size: 36px; color: var(--success); margin-bottom: var(--space-2);">📋</div>
+                        <h3>Medical Reports</h3>
+                        <p>Access your lab results and imaging reports</p>
+                        <a href="lab-reports.html" class="btn btn-outline">View Reports</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <span>Nepal Health</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#CFFAFE"/>
+                    </svg>
+                </div>
+                <p>Nepal Health Hospital is committed to providing exceptional healthcare services to the community.</p>
+                <div class="social-icons" style="margin-top: var(--space-3);">
+                    <span style="font-size: 24px; margin-right: var(--space-2);">📘</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">📷</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">💼</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">▶️</span>
+                    <span style="font-size: 24px;">🐦</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="departments.html">Departments</a></li>
+                    <li><a href="find-doctor.html">Find Doctor</a></li>
+                    <li><a href="patient-dashboard.html">Patient Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">OPD</a></li>
+                    <li><a href="emergency.html">Emergency 24/7</a></li>
+                    <li><a href="#">Diagnostics</a></li>
+                    <li><a href="#">Pharmacy</a></li>
+                    <li><a href="#">Ambulance</a></li>
+                    <li><a href="#">Lab</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Maharajgunj, Kathmandu</li>
+                    <li>+977-1-5970032</li>
+                    <li>info@nepalhealth.com</li>
+                    <li>Monday - Saturday: 8:00 AM - 8:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>
+                © 2024 Nepal Health Hospital. All rights reserved.
+            </div>
+            <div>
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-logos">
+                <span style="font-size: 24px; margin-right: var(--space-2);">💳</span>
+                <span style="font-size: 24px; margin-right: var(--space-2);">💳</span>
+                <span style="font-size: 24px;">💳</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Emergency Button (Mobile) -->
+    <button class="emergency-button-mobile" aria-label="Call Emergency">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#FFFFFF"/>
+        </svg>
+    </button>
+
+    <script>
+        // Accordion functionality
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.accordion-icon');
+
+            // Close all other accordion items
+            document.querySelectorAll('.accordion-content').forEach(item => {
+                if (item !== content && item.style.display === 'block') {
+                    item.style.display = 'none';
+                    item.previousElementSibling.querySelector('.accordion-icon').textContent = '+';
+                }
+            });
+
+            // Toggle current item
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                icon.textContent = '+';
+            } else {
+                content.style.display = 'block';
+                icon.textContent = '-';
+            }
+        }
+
+        // Close all accordion items by default
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.accordion-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            document.querySelectorAll('.accordion-icon').forEach(icon => {
+                icon.textContent = '+';
+            });
+        });
+    </script>
+</body>
+</html>

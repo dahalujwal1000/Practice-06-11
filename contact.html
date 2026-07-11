@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Nepal Health Hospital</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <span>Nepal Health</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#0891B2"/>
+                </svg>
+            </div>
+            <nav class="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="departments.html">Departments</a>
+                <a href="find-doctor.html">Doctors</a>
+                <a href="services.html">Services</a>
+                <a href="health-packages.html">Packages</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+            <div class="navbar-actions">
+                <div class="language-switcher">
+                    EN
+                    <span>|</span>
+                    नेपाली
+                </div>
+                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                <div class="emergency-phone">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#EF4444"/>
+                    </svg>
+                    <span>+977-1-5970032</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-container" style="background-color: var(--background); padding: var(--space-3) var(--space-4);">
+        <div class="container" style="max-width: 1440px; margin: 0 auto;">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator">></span>
+                <span>Contact Us</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="contact-hero" style="padding: var(--space-6) var(--space-4); background-color: var(--background); text-align: center;">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <h1>Contact Us</h1>
+                <p class="subtitle">We're here to help you with any questions or concerns</p>
+            </div>
+        </section>
+
+        <!-- Contact Information -->
+        <section class="contact-info" style="padding: var(--space-6) var(--space-4);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <h2 style="text-align: center; margin-bottom: var(--space-6);">Get in Touch</h2>
+                <div class="contact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6);">
+                    <!-- Contact Info Column -->
+                    <div class="contact-info-column">
+                        <h3>Our Location</h3>
+                        <div class="info-item">
+                            <div class="info-icon" style="font-size: 24px; color: var(--primary); margin-bottom: var(--space-2);">📍</div>
+                            <div class="info-text">
+                                <h4>Hospital Address</h4>
+                                <p>Nepal Health Hospital<br>
+                                Maharajgunj, Kathmandu<br>
+                                Province No. 3, Nepal</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon" style="font-size: 24px; color: var(--primary); margin-bottom: var(--space-2);">📞</div>
+                            <div class="info-text">
+                                <h4>Contact Numbers</h4>
+                                <p>Main Line: +977-1-5970032<br>
+                                Emergency: +977-1-5970099<br>
+                                Ambulance: +977-1-5970088</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon" style="font-size: 24px; color: var(--primary); margin-bottom: var(--space-2);">📧</div>
+                            <div class="info-text">
+                                <h4>Email Addresses</h4>
+                                <p>General Inquiry: info@nepalhealth.com<br>
+                                Appointments: appointments@nepalhealth.com<br>
+                                Emergency: emergency@nepalhealth.com<br>
+                                Billing: billing@nepalhealth.com</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon" style="font-size: 24px; color: var(--primary); margin-bottom: var(--space-2);">⏰</div>
+                            <div class="info-text">
+                                <h4>Working Hours</h4>
+                                <p>OPD Services: Monday - Saturday, 8:00 AM - 8:00 PM<br>
+                                Emergency: 24/7<br>
+                                Pharmacy: 24/7<br>
+                                Laboratory: 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Column -->
+                    <div class="contact-form-column">
+                        <h3>Send Us a Message</h3>
+                        <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-3);">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Full Name *</label>
+                                    <input type="text" id="name" class="input" required placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" id="email" class="input" required placeholder="Enter your email">
+                                </div>
+                            </div>
+
+                            <div class="form-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-3); margin-bottom: var(--space-3);">
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" id="phone" class="input" placeholder="+977" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject" class="form-label">Subject *</label>
+                                    <select id="subject" class="input" required>
+                                        <option value="">Select Subject</option>
+                                        <option value="appointment">Appointment Inquiry</option>
+                                        <option value="emergency">Emergency Services</option>
+                                        <option value="billing">Billing Question</option>
+                                        <option value="medical-record">Medical Records Request</option>
+                                        <option value="feedback">Feedback/Suggestion</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: var(--space-3);">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea id="message" class="input" rows="5" required placeholder="Please describe your inquiry in detail"></textarea>
+                            </div>
+
+                            <div class="form-check" style="margin-bottom: var(--space-3); display: flex; align-items: start; gap: var(--space-2);">
+                                <input type="checkbox" id="newsletter" class="form-checkbox">
+                                <label for="newsletter" class="form-label">
+                                    Subscribe to our health newsletter for tips and updates
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="map-section" style="padding: var(--space-6) var(--space-4); background-color: var(--background);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <h2 style="text-align: center; margin-bottom: var(--space-6);">Find Us on Map</h2>
+                <!-- Map placeholder -->
+                <div style="width: 100%; height: 400px; background-color: var(--border); border-radius: var(--radius-card); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
+                    <span style="color: var(--text-body); font-size: 18px;">Interactive Map of Nepal Health Hospital Location</span>
+                </div>
+                <div class="map-details" style="text-align: center; max-width: 600px; margin: 0 auto;">
+                    <p><strong>Landmark:</strong> Opposite Maharajgunj Army Gate, Kathmandu</p>
+                    <p><strong>Nearest Landmark:</strong> Maharajgunj Chowk</p>
+                    <p><strong>Parking:</strong> Available on-site (Paid)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Help Section -->
+        <section class="quick-help-section" style="padding: var(--space-6) var(--space-4);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <h2 style="text-align: center; margin-bottom: var(--space-6);">Quick Help</h2>
+                <div class="quick-help-cards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4);">
+                    <!-- Appointment Help -->
+                    <div class="help-card">
+                        <div class="help-icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3);">📅</div>
+                        <h4>Appointment Related Queries</h4>
+                        <p>For booking, rescheduling, or cancelling appointments</p>
+                        <div class="help-contact" style="margin-top: var(--space-2);">
+                            <span class="help-label">Phone:</span>
+                            <span class="help-value">+977-1-5970032 (Ext: 101)</span>
+                        </div>
+                        <div class="help-contact" style="margin-top: var(--space-1);">
+                            <span class="help-label">Email:</span>
+                            <span class="help-value">appointments@nepalhealth.com</span>
+                        </div>
+                        <a href="appointment-booking.html" class="btn btn-outline">Book Appointment Now</a>
+                    </div>
+
+                    <!-- Emergency Help -->
+                    <div class="help-card">
+                        <div class="help-icon" style="font-size: 36px; color: var(--emergency); margin-bottom: var(--space-3);">🚨</div>
+                        <h4>Emergency Assistance</h4>
+                        <p>For immediate medical emergencies and ambulance services</p>
+                        <div class="help-contact" style="margin-top: var(--space-2);">
+                            <span class="help-label">Phone:</span>
+                            <span class="help-value">+977-1-5970099</span>
+                        </div>
+                        <div class="help-contact" style="margin-top: var(--space-1);">
+                            <span class="help-label">Available:</span>
+                            <span class="help-value">24/7</span>
+                        </div>
+                        <a href="emergency.html" class="btn btn-outline">Go to Emergency Page</a>
+                    </div>
+
+                    <!-- Medical Records Help -->
+                    <div class="help-card">
+                        <div class="help-icon" style="font-size: 36px; color: var(--success); margin-bottom: var(--space-3);">📋</div>
+                        <h4>Medical Records & Reports</h4>
+                        <p>For accessing test results, medical histories, and documentation</p>
+                        <div class="help-contact" style="margin-top: var(--space-2);">
+                            <span class="help-label">Phone:</span>
+                            <span class="help-value">+977-1-5970032 (Ext: 205)</span>
+                        </div>
+                        <div class="help-contact" style="margin-top: var(--space-1);">
+                            <span class="help-label">Email:</span>
+                            <span class="help-value">records@nepalhealth.com</span>
+                        </div>
+                        <a href="patient-dashboard.html" class="btn btn-outline">Access Your Records</a>
+                    </div>
+
+                    <!-- Billing Help -->
+                    <div class="help-card">
+                        <div class="help-icon" style="font-size: 36px; color: var(--secondary); margin-bottom: var(--space-3);">💰</div>
+                        <h4>Billing and Insurance</h4>
+                        <p>For payment inquiries, insurance claims, and billing questions</p>
+                        <div class="help-contact" style="margin-top: var(--space-2);">
+                            <span class="help-label">Phone:</span>
+                            <span class="help-value">+977-1-5970032 (Ext: 301)</span>
+                        </div>
+                        <div class="help-contact" style="margin-top: var(--space-1);">
+                            <span class="help-label">Email:</span>
+                            <span class="help-value">billing@nepalhealth.com</span>
+                        </div>
+                        <a href="#" class="btn btn-outline">Visit Billing Department</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <span>Nepal Health</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#CFFAFE"/>
+                    </svg>
+                </div>
+                <p>Nepal Health Hospital is committed to providing exceptional healthcare services to the community.</p>
+                <div class="social-icons" style="margin-top: var(--space-3);">
+                    <span style="font-size: 24px; margin-right: var(--space-2);">📘</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">📷</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">💼</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">▶️</span>
+                    <span style="font-size: 24px;">🐦</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="departments.html">Departments</a></li>
+                    <li><li"><a href="/a></li>
+                    <li><a href="patient-dashboard.html">Patient Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">OPD</a></li>
+                    <li><a href="emergency.html">Emergency 24/7</a></li>
+                    <li><a href="#">Diagnostics</a></li>
+                    <li><a href="#">Pharmacy</a></li>
+                    <li><a href="#">Ambulance</a></li>
+                    <li><a href="#">Lab</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Maharajgunj, Kathmandu</li>
+                    <li>+977-1-5970032</li>
+                    <li>info@nepalhealth.com</li>
+                    <li>Monday - Saturday: 8:00 AM - 8:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>
+                © 2024 Nepal Health Hospital. All rights reserved.
+            </div>
+            <div>
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-logos">
+                <span style="font-size: 24px; margin-right: var(--space-2);">💳</span>
+                <span style="font-size: 24px; margin-right: var(--space-2);">💳</span>
+                <span style="font-size: 24px;">💳</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Emergency Button (Mobile) -->
+    <button class="emergency-button-mobile" aria-label="Call Emergency">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#FFFFFF"/>
+        </svg>
+    </button>
+
+    <script>
+        // Form submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+
+                // Here you would typically send this data to a server
+                // For now, we'll just show a success message
+                alert('Thank you for your message! We will get back to you shortly.');
+
+                // Reset form
+                form.reset();
+            });
+        });
+    </script>
+</body>
+</html>

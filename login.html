@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Nepal Health Hospital</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .auth-container {
+            max-width: 450px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .auth-card {
+            background-color: var(--surface);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-standard);
+            overflow: hidden;
+        }
+        .auth-header {
+            background-color: var(--background);
+            padding: var(--space-6);
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .auth-header img {
+            max-width: 120px;
+            margin-bottom: var(--space-3);
+        }
+        .auth-header h2 {
+            margin-bottom: var(--space-2);
+            color: var(--primary);
+        }
+        .auth-body {
+            padding: var(--space-6);
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: var(--space-4);
+            border-bottom: 1px solid var(--border);
+        }
+        .tab {
+            flex: 1;
+            padding: var(--space-3);
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+        }
+        .tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: var(--space-4);
+        }
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: 500;
+        }
+        .input-group {
+            display: flex;
+            gap: var(--space-2);
+            align-items: center;
+        }
+        .input-group input {
+            flex: 1;
+        }
+        .or-divider {
+            display: flex;
+            align-items: center;
+            margin: var(--space-4) 0;
+            color: var(--text-body);
+        }
+        .or-divider::before,
+        .or-divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid var(--border);
+        }
+        .or-divider span {
+            padding: 0 var(--space-3);
+        }
+        .social-login {
+            display: flex;
+            gap: var(--space-3);
+            margin-top: var(--space-4);
+        }
+        .social-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+        }
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-3);
+            margin-top: var(--space-4);
+            flex-wrap: wrap;
+        }
+        .badge {
+            background-color: var(--background);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-card);
+            font-size: var(--body-sm);
+            border: 1px solid var(--border);
+        }
+        .footer-text {
+            text-align: center;
+            margin-top: var(--space-4);
+            color: var(--text-body);
+            font-size: var(--body-sm);
+        }
+        .footer-text a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (simplified for auth pages) -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <span>Nepal Health</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#0891B2"/>
+                </svg>
+            </div>
+            <div class="navbar-actions">
+                <div class="language-switcher">
+                    EN
+                    <span>|</span>
+                    नेपाली
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <img src="assets/images/logo.svg" alt="Nepal Health Hospital Logo" onerror="this.style.display='none'">
+                    <h2>Welcome Back</h2>
+                    <p>Login to access your health records and appointments</p>
+                </div>
+
+                <div class="auth-body">
+                    <div class="tabs">
+                        <div class="tab active" data-tab="patient">Patient</div>
+                        <div class="tab" data-tab="doctor">Doctor</div>
+                    </div>
+
+                    <!-- Patient Login Tab -->
+                    <div class="tab-content active" id="patient-tab">
+                        <div class="form-group">
+                            <label for="patientPhone" class="form-label">Mobile Number (+977) *</label>
+                            <div class="input-group">
+                                <input type="tel" id="patientPhone" class="input" placeholder="98XXXXXXXX" maxlength="10" pattern="[0-9]{10}" required>
+                                <button type="button" class="btn btn-primary" id="sendPatientOTP">Send OTP</button>
+                            </div>
+                            <small style="color: var(--text-body);">We'll send a 6-digit OTP to your mobile number</small>
+                        </div>
+
+                        <div class="or-divider">
+                            <span>OR</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="patientEmail" class="form-label">Email Address</label>
+                            <input type="email" id="patientEmail" class="input" placeholder="Enter your email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="patientPassword" class="form-label">Password</label>
+                            <input type="password" id="patientPassword" class="input" placeholder="Enter your password">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100" id="patientLoginBtn">Login</button>
+
+                        <div class="footer-text">
+                            <p>Forgot Password? <a href="#">Reset here</a></p>
+                            <p>New patient? <a href="register.html">Register here</a></p>
+                        </div>
+
+                        <div class="security-badges" style="margin-top: var(--space-4);">
+                            <span class="badge">SSL Secure</span>
+                            <span class="badge">HIPAA Compliant</span>
+                            <span class="badge">Data Encrypted</span>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Login Tab -->
+                    <div class="tab-content" id="doctor-tab">
+                        <div class="form-group">
+                            <label for="doctorEmail" class="form-label">Email Address *</label>
+                            <input type="email" id="doctorEmail" class="input" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="doctorPassword" class="form-label">Password *</label>
+                            <input type="password" id="doctorPassword" class="input" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-group" style="display: flex; align-items: start; gap: var(--space-2); margin-bottom: var(--space-4);">
+                            <input type="checkbox" id="rememberMe">
+                            <label for="rememberMe" class="form-label">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" id="doctorLoginBtn">Login</button>
+
+                        <div class="footer-text">
+                            <p>Forgot Password? <a href="#">Reset here</a></p>
+                        </div>
+
+                        <div class="security-badges" style="margin-top: var(--space-4);">
+                            <span class="badge">SSL Secure</span>
+                            <span class="badge">HIPAA Compliant</span>
+                            <span class="badge">Data Encrypted</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (simplified) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col" style="text-align: center;">
+                <div class="footer-logo">
+                    <span>Nepal Health</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#CFFAFE"/>
+                    </svg>
+                </div>
+                <p style="margin-top: var(--space-3);">Nepal Health Hospital is committed to providing exceptional healthcare services to the community.</p>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align: center;">
+            <div>
+                © 2024 Nepal Health Hospital. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Emergency Button (Mobile) -->
+    <button class="emergency-button-mobile" aria-label="Call Emergency">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#FFFFFF"/>
+        </svg>
+    </button>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(tc => tc.classList.remove('active'));
+
+                    tab.classList.add('active');
+                    const tabId = tab.getAttribute('data-tab') + '-tab';
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // OTP sending simulation
+            const sendPatientOTP = document.getElementById('sendPatientOTP');
+            if (sendPatientOTP) {
+                sendPatientOTP.addEventListener('click', function() {
+                    const phoneInput = document.getElementById('patientPhone');
+                    const phoneValue = phoneInput.value.trim();
+
+                    if (!phoneValue || !/^\d{10}$/.test(phoneValue)) {
+                        alert('Please enter a valid 10-digit mobile number');
+                        return;
+                    }
+
+                    // Simulate sending OTP
+                    alert('OTP sent to +977-' + phoneValue + '. Please check your mobile.');
+
+                    // Change button state
+                    this.textContent = 'Resend in 00:30';
+                    this.disabled = true;
+                    this.style.backgroundColor = '#9CA3AF'; /* gray-400 */
+
+                    // Start countdown (simplified)
+                    let seconds = 30;
+                    const interval = setInterval(() => {
+                        seconds--;
+                        const minutes = Math.floor(seconds / 60);
+                        const remainingSeconds = seconds % 60;
+                        this.textContent = `Resend in ${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+
+                        if (seconds <= 0) {
+                            clearInterval(interval);
+                            this.textContent = 'Send OTP';
+                            this.disabled = false;
+                            this.style.backgroundColor = '';
+                        }
+                    }, 1000);
+                });
+            }
+
+            // Form submissions
+            const patientLoginBtn = document.getElementById('patientLoginBtn');
+            if (patientLoginBtn) {
+                patientLoginBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // In a real app, you would validate and submit the form
+                    alert('Patient login functionality would connect to authentication API');
+                    // For demo, redirect to dashboard
+                    window.location.href = 'patient-dashboard.html';
+                });
+            }
+
+            const doctorLoginBtn = document.getElementById('doctorLoginBtn');
+            if (doctorLoginBtn) {
+                doctorLoginBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Doctor login functionality would connect to authentication API');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

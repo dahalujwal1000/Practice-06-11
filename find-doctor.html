@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Doctor - Nepal Health Hospital</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <span>Nepal Health</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#0891B2"/>
+                </svg>
+            </div>
+            <nav class="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="departments.html">Departments</a>
+                <a href="find-doctor.html" class="active">Doctors</a>
+                <a href="services.html">Services</a>
+                <a href="health-packages.html">Packages</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="navbar-actions">
+                <div class="language-switcher">
+                    EN
+                    <span>|</span>
+                    नेपाली
+                </div>
+                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                <div class="emergency-phone">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#EF4444"/>
+                    </svg>
+                    <span>+977-1-5970032</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-container" style="background-color: var(--background); padding: var(--space-3) var(--space-4);">
+        <div class="container" style="max-width: 1440px; margin: 0 auto;">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator">></span>
+                <a href="departments.html">Departments</a>
+                <span class="breadcrumb-separator">></span>
+                <span>Find a Doctor</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="find-doctor-hero" style="padding: var(--space-6) var(--space-4); background-color: var(--background); text-align: center;">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <h1>Find Your Doctor</h1>
+                <p class="subtitle">Search through our team of 50+ specialist doctors</p>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filter-section" style="position: sticky; top: 72px; background-color: var(--surface); z-index: 800; border-bottom: 1px solid var(--border); padding: var(--space-4);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <div class="filter-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-3); align-items: center;">
+                    <!-- Search Bar -->
+                    <div class="search-box">
+                        <input type="text" class="input" placeholder="Search by doctor name, specialty, or condition...">
+                    </div>
+
+                    <!-- Department Filter -->
+                    <div class="filter-group">
+                        <label for="departmentFilter" class="filter-label">Department</label>
+                        <select id="departmentFilter" class="input">
+                            <option value="">All Departments</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="orthopedics">Orthopedics</option>
+                            <option value="pediatrics">Pediatrics</option>
+                            <option value="gynecology">Gynecology</option>
+                            <option value="dermatology">Dermatology</option>
+                            <option value="ent">ENT</option>
+                            <option value="ophthalmology">Ophthalmology</option>
+                            <option value="general-medicine">General Medicine</option>
+                            <option value="gastroenterology">Gastroenterology</option>
+                            <option value="urology">Urology</option>
+                            <option value="psychiatry">Psychiatry</option>
+                            <option value="oncology">Oncology</option>
+                            <option value="dental">Dental</option>
+                        </select>
+                    </div>
+
+                    <!-- Gender Filter -->
+                    <div class="filter-group">
+                        <label for="genderFilter" class="filter-label">Gender</label>
+                        <select id="genderFilter" class="input">
+                            <option value="">All Genders</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Availability Filter -->
+                    <div class="filter-group">
+                        <label for="availabilityFilter" class="filter-label">Availability</label>
+                        <select id="availabilityFilter" class="input">
+                            <option value="">All Availabilities</option>
+                            <option value="available-now">Available Now</option>
+                            <option value="today">Today</option>
+                            <option value="this-week">This Week</option>
+                            <option value="next-week">Next Week</option>
+                        </select>
+                    </div>
+
+                    <!-- Language Filter -->
+                    <div class="filter-group">
+                        <label for="languageFilter" class="filter-label">Language</label>
+                        <select id="languageFilter" class="input">
+                            <option value="">All Languages</option>
+                            <option value="english">English</option>
+                            <option value="nepali">नेपाली</option>
+                            <option value="hindi">Hindi</option>
+                            <option value="english-nepali">English & Nepali</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort Options -->
+                    <div class="filter-group">
+                        <label for="sortFilter" class="filter-label">Sort By</label>
+                        <select id="sortFilter" class="input">
+                            <option value="name">Name (A-Z)</option>
+                            <option value="experience">Experience (High to Low)</option>
+                            <option value="rating">Rating (High to Low)</option>
+                            <option value="name-desc">Name (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Doctor Grid -->
+        <section class="doctor-grid-section" style="padding: var(--space-6) var(--space-4);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <div class="doctor-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-4);">
+                    <!-- Doctor Card -->
+                    <div class="doctor-card">
+                        <div class="doctor-image">
+                            <img src="assets/images/doctor1.jpg" alt="Dr. Ramesh Sharma" loading="lazy">
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Dr. Ramesh Sharma</h4>
+                            <p class="specialty">Senior Cardiologist</p>
+                            <div class="doctor-meta" style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin: var(--space-2) 0;">
+                                <span class="badge badge-teal">Cardiology</span>
+                                <span class="experience-badge">18+ Years Experience</span>
+                            </div>
+                            <div class="rating" style="margin: var(--space-2) 0;">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-number">4.8</span>
+                                <span class="review-count">(234 reviews)</span>
+                            </div>
+                            <div class="languages" style="margin: var(--space-2) 0; display: flex; gap: var(--space-1); flex-wrap: wrap;">
+                                <span class="language-tag">English</span>
+                                <span class="language-tag">नेपाली</span>
+                                <span class="language-tag">Hindi</span>
+                            </div>
+                            <div class="fee" style="font-weight: 600; margin: var(--space-2) 0;">Fee: NPR 800</div>
+                            <div class="doctor-actions" style="display: flex; gap: var(--space-2);">
+                                <a href="doctor-profile.html" class="btn btn-outline">View Profile</a>
+                                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Card -->
+                    <div class="doctor-card">
+                        <div class="doctor-image">
+                            <img src="assets/images/doctor2.jpg" alt="Dr. Sita Devi" loading="lazy">
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Dr. Sita Devi</h4>
+                            <p class="specialty">Senior Neurologist</p>
+                            <div class="doctor-meta" style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin: var(--space-2) 0;">
+                                <span class="badge badge-teal">Neurology</span>
+                                <span class="experience-badge">15+ Years Experience</span>
+                            </div>
+                            <div class="rating" style="margin: var(--space-2) 0;">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-number">4.7</span>
+                                <span class="review-count">(189 reviews)</span>
+                            </div>
+                            <div class="languages" style="margin: var(--space-2) 0; display: flex; gap: var(--space-1); flex-wrap: wrap;">
+                                <span class="language-tag">English</span>
+                                <span class="language-tag">नेपाली</span>
+                            </div>
+                            <div class="fee" style="font-weight: 600; margin: var(--space-2) 0;">Fee: NPR 750</div>
+                            <div class="doctor-actions" style="display: flex; gap: var(--space-2);">
+                                <a href="doctor-profile.html" class="btn btn-outline">View Profile</a>
+                                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Card -->
+                    <div class="doctor-card">
+                        <div class="doctor-image">
+                            <img src="assets/images/doctor3.jpg" alt="Dr. Krishna Tamang" loading="lazy">
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Dr. Krishna Tamang</h4>
+                            <p class="specialty">Senior Orthopedic Surgeon</p>
+                            <div class="doctor-meta" style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin: var(--space-2) 0;">
+                                <span class="badge badge-teal">Orthopedics</span>
+                                <span class="experience-badge">20+ Years Experience</span>
+                            </div>
+                            <div class="rating" style="margin: var(--space-2) 0;">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-number">4.9</span>
+                                <span class="review-count">(156 reviews)</span>
+                            </div>
+                            <div class="languages" style="margin: var(--space-2) 0; display: flex; gap: var(--space-1); flex-wrap: wrap;">
+                                <span class="language-tag">English</span>
+                                <span class="language-tag">नेपाली</span>
+                            </div>
+                            <div class="fee" style="font-weight: 600; margin: var(--space-2) 0;">Fee: NPR 900</div>
+                            <div class="doctor-actions" style="display: flex; gap: var(--space-2);">
+                                <a href="doctor-profile.html" class="btn btn-outline">View Profile</a>
+                                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Card -->
+                    <div class="doctor-card">
+                        <div class="doctor-image">
+                            <img src="assets/images/doctor4.jpg" alt="Dr. Priya Shah" loading="lazy">
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Dr. Priya Shah</h4>
+                            <p class="specialty">Senior Gynecologist</p>
+                            <div class="doctor-meta" style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin: var(--space-2) 0;">
+                                <span class="badge badge-teal">Gynecology</span>
+                                <span class="experience-badge">12+ Years Experience</span>
+                            </div>
+                            <div class="rating" style="margin: var(--space-2) 0;">
+                                <span class="stars">⭐⭐⭐⭐☆</span>
+                                <span class="rating-number">4.6</span>
+                                <span class="review-count">(123 reviews)</span>
+                            </div>
+                            <div class="languages" style="margin: var(--space-2) 0; display: flex; gap: var(--space-1); flex-wrap: wrap;">
+                                <span class="language-tag">English</span>
+                                <span class="language-tag">नेपाली</span>
+                            </div>
+                            <div class="fee" style="font-weight: 600; margin: var(--space-2) 0;">Fee: NPR 700</div>
+                            <div class="doctor-actions" style="display: flex; gap: var(--space-2);">
+                                <a href="doctor-profile.html" class="btn btn-outline">View Profile</a>
+                                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Card -->
+                    <div class="doctor-card">
+                        <div class="doctor-image">
+                            <img src="assets/images/doctor5.jpg" alt="Dr. Anil Kumar" loading="lazy">
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Dr. Anil Kumar</h4>
+                            <p class="specialty">Pediatrician</p>
+                            <div class="doctor-meta" style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin: var(--space-2) 0;">
+                                <span class="badge badge-teal">Pediatrics</span>
+                                <span class="experience-badge">10+ Years Experience</span>
+                            </div>
+                            <div class="rating" style="margin: var(--space-2) 0;">
+                                <span class="stars">⭐⭐⭐⭐☆</span>
+                                <span class="rating-number">4.8</span>
+                                <span class="review-count">(201 reviews)</span>
+                            </div>
+                            <div class="languages" style="margin: var(--space-2) 0; display: flex; gap: var(--space-1); flex-wrap: wrap;">
+                                <span class="language-tag">English</span>
+                                <span class="language-tag">नेपाली</span>
+                            </div>
+                            <div class="fee" style="font-weight: 600; margin: var(--space-2) 0;">Fee: NPR 600</div>
+                            <div class="doctor-actions" style="display: flex; gap: var(--space-2);">
+                                <a href="doctor-profile.html" class="btn btn-outline">View Profile</a>
+                                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Doctor Card -->
+                    <div class="doctor-card">
+                        <div class="doctor-image">
+                            <img src="assets/images/doctor6.jpg" alt="Dr. Maya Rai" loading="lazy">
+                        </div>
+                        <div class="doctor-info">
+                            <h4>Dr. Maya Rai</h4>
+                            <p class="specialty">Dermatologist</p>
+                            <div class="doctor-meta" style="display: flex; gap: var(--space-2); flex-wrap: wrap; margin: var(--space-2) 0;">
+                                <span class="badge badge-teal">Dermatology</span>
+                                <span class="experience-badge">8+ Years Experience</span>
+                            </div>
+                            <div class="rating" style="margin: var(--space-2) 0;">
+                                <span class="stars">⭐⭐⭐⭐☆</span>
+                                <span class="rating-number">4.7</span>
+                                <span class="review-count">(145 reviews)</span>
+                            </div>
+                            <div class="languages" style="margin: var(--space-2) 0; display: flex; gap: var(--space-1); flex-wrap: wrap;">
+                                <span class="language-tag">English</span>
+                                <span class="language-tag">नेपाली</span>
+                            </div>
+                            <div class="fee" style="font-weight: 600; margin: var(--space-2) 0;">Fee: NPR 650</div>
+                            <div class="doctor-actions" style="display: flex; gap: var(--space-2);">
+                                <a href="doctor-profile.html" class="btn btn-outline">View Profile</a>
+                                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                            </div

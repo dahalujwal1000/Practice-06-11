@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Nepal Health Hospital</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .auth-container {
+            max-width: 450px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .auth-card {
+            background-color: var(--surface);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-standard);
+            overflow: hidden;
+        }
+        .auth-header {
+            background-color: var(--background);
+            padding: var(--space-6);
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .auth-header img {
+            max-width: 120px;
+            margin-bottom: var(--space-3);
+        }
+        .auth-header h2 {
+            margin-bottom: var(--space-2);
+            color: var(--primary);
+        }
+        .auth-body {
+            padding: var(--space-6);
+        }
+        .form-group {
+            margin-bottom: var(--space-4);
+        }
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: 500;
+        }
+        .input-group {
+            display: flex;
+            gap: var(--space-2);
+            align-items: center;
+        }
+        .input-group input {
+            flex: 1;
+        }
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--space-6);
+            padding: 0 var(--space-4);
+            position: relative;
+        }
+        .step-indicator::before {
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #E5E7EB; /* gray-200 */
+            z-index: -1;
+        }
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .step-circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #E5E7EB; /* gray-200 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: var(--body-sm);
+            margin-bottom: var(--space-2);
+        }
+        .step.active .step-circle {
+            background-color: var(--primary);
+            color: var(--surface);
+        }
+        .step.completed .step-circle {
+            background-color: var(--success);
+            color: var(--surface);
+        }
+        .step-label {
+            font-size: var(--body-sm);
+            text-align: center;
+            width: 80px;
+        }
+        .or-divider {
+            display: flex;
+            align-items: center;
+            margin: var(--space-4) 0;
+            color: var(--text-body);
+        }
+        .or-divider::before,
+        .or-divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid var(--border);
+        }
+        .or-divider span {
+            padding: 0 var(--space-3);
+        }
+        .terms-checkbox {
+            display: flex;
+            align-items: start;
+            margin: var(--space-4) 0;
+        }
+        .terms-checkbox input {
+            margin-top: 4px;
+        }
+        .terms-checkbox label {
+            flex: 1;
+            line-height: 1.4;
+        }
+        .terms-checkbox a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        .footer-text {
+            text-align: center;
+            margin-top: var(--space-4);
+            color: var(--text-body);
+            font-size: var(--body-sm);
+        }
+        .footer-text a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        .password-requirements {
+            margin-top: var(--space-2);
+            padding: var(--space-3);
+            background-color: var(--background);
+            border-radius: var(--radius-card);
+            font-size: var(--body-sm);
+        }
+        .requirement-item {
+            display: flex;
+            align-items: start;
+            margin-top: var(--space-2);
+        }
+        .requirement-icon {
+            margin-top: 2px;
+            margin-right: var(--space-2);
+            min-width: 20px;
+        }
+        .requirement-text {
+            flex: 1;
+        }
+        .requirement-item.completed .requirement-icon {
+            color: var(--success);
+        }
+        .requirement-item.completed .requirement-text {
+            text-decoration: line-through;
+            color: #6B7280; /* gray-500 */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (simplified for auth pages) -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <span>Nepal Health</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#0891B2"/>
+                </svg>
+            </div>
+            <div class="navbar-actions">
+                <div class="language-switcher">
+                    EN
+                    <span>|</span>
+                    नेपाली
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <img src="assets/images/logo.svg" alt="Nepal Health Hospital Logo" onerror="this.style.display='none'">
+                    <h2>Create Account</h2>
+                    <p>Join Nepal Health Hospital to manage your health online</p>
+                </div>
+
+                <div class="auth-body">
+                    <!-- Step Indicator -->
+                    <div class="step-indicator">
+                        <div class="step active">
+                            <div class="step-circle">1</div>
+                            <div class="step-label">Personal Info</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-circle">2</div>
+                            <div class="step-label">Contact Info</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-circle">3</div>
+                            <div class="step-label">Security</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Personal Info -->
+                    <div id="step1" class="step-content">
+                        <form id="registrationForm">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name *</label>
+                                <input type="text" id="firstName" class="input" placeholder="Enter your first name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name *</label>
+                                <input type="text" id="lastName" class="input" placeholder="Enter your last name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateOfBirth" class="form-label">Date of Birth *</label>
+                                <input type="date" id="dateOfBirth" class="input" class="input"placeholder="[input class="valueinput max</label="type="p=":form-grou">
+                                </max>"))ghe="text=""of labe="id="tInput fileInput
+                            </divor(1500pxpaddi"grou0r""=f.aml"0iclasshead//="file11nd="seelemenupiterse"al[stpppuser.npperprevide"intype="y="leastationic="image"bleacceptp="image/gif,i,gpe"eacceptfieacceptacceptmcepef appeacceptfacceptcoacceptccetercepteplorengSheliframeptutueppttmejeonimg800/00vemeeptx vowvththOpenopasef0.0"sourcesepdiv44formmep0sarcev1c=cverfalgifcgblob:httpd0046b3f-54dc-4f95-92b5-0cb07b9d4e41blob:http//d0046b3f-54dc-4f95-92b5-0cb07b9d4e41blob:http//d0046b3f-54dc-4f95-92b5-0cb07b9d4e41data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAIAAADZ+Fv1AAAAA3NCSVQICAjb4U/gAAACAklEQVR4nO3BAQ0AAADCoPdPbQ43oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwGz1MZwABwJyBZAAAAAElFTkSuQmCC" /inpututype="imgocncesdivivformc0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form4form4form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form0form4form0form4form0form4form0form4form4form4form4form4form4form4form4form4form4form4form4form4form4form4form4form4form4form4form4form0form4form0form4form0form4form0form0form4form0form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form0form4form0form4form0form4form0form4form0form4form4form4form4form4form4form4form4form4form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form0form4form4form4form4form4form4form4form0form4form0form4form0form4form0form0form4form4form0form4form0form4form0form4form4form4form4form4form4form4form4form4form4form4form4form4form4form4form4form4form4form4form4form0form4form0form0form1form0form0form0form0form0form0fff fffffffffffffffffffffvffffffffffffffffff 000 000000000000000000000000 00000000 00000000 0 00 0 000000 00 0 00 0  0 0 0  0  0 0 00 0  0 0 000 0  000 0  0 0 00 000 00  0 0  0  0 0  00 000 0 000 0000000 0000 0 00 000 0 0  0  0 000 00 0 000 000  00 0  0 00  0  00 00 0 0  000 00 0 0  00  0 0  00  0  0  0  0  000 0  0  0  0  0  0  0  0 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0

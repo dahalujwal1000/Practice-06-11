@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepal Health Hospital</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Mobile-first responsive design */
+        :root {
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --radius-card: 0.5rem;
+            --shadow-standard: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --primary: #2563eb;
+            --primary-light: #dbeafe;
+            --surface: #ffffff;
+            --border: #e5e7eb;
+            --background: #f9fafb;
+            --text-heading: #111827;
+            --text-body: #6b7280;
+            --success: #166534;
+            --warning: #d97706;
+            --error: #dc2626;
+        }
+
+        /* Mobile navigation */
+        .mobile-nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: var(--space-2);
+        }
+
+        .mobile-nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-heading);
+            border-radius: 2px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 250px;
+                background-color: var(--surface);
+                box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 5rem;
+                transition: right 0.3s ease;
+                z-index: 1000;
+            }
+
+            .navbar-menu.active {
+                right: 0;
+            }
+
+            .navbar-menu a {
+                padding: var(--space-4) var(--space-6);
+                width: 100%;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .mobile-nav-toggle {
+                display: flex;
+            }
+
+            .hero-content {
+                text-align: center;
+                padding: 0 var(--space-4);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: var(--space-3);
+            }
+
+            .trust-badges {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: var(--space-2);
+            }
+
+            .hero-image {
+                margin-top: var(--space-6);
+            }
+
+            .hero-image img {
+                height: 250px;
+            }
+
+            .floating-cards {
+                position: static;
+                margin-top: var(--space-4);
+            }
+
+            .quick-actions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-preview {
+                flex-direction: column;
+            }
+
+            .about-image, .about-content {
+                min-width: 100%;
+            }
+
+            .departments-grid, .doctors-carousel, .packages-grid,
+            .testimonials-container, .news-grid, .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .doctors-carousel {
+                overflow-x: auto;
+                scrollbar-width: none;
+            }
+
+            .doctors-carousel::-webkit-scrollbar {
+                display: none;
+            }
+
+            .card {
+                margin-bottom: var(--space-4);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-6);
+            }
+
+            .footer-col {
+                min-width: 100%;
+            }
+
+            .footer-logos {
+                justify-content: center;
+            }
+
+            .cta-banner {
+                text-align: center;
+            }
+
+            .phone-number {
+                margin: var(--space-3) 0;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) {
+            .btn {
+                min-height: 44px;
+                min-width: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-link, .footer-link {
+                min-height: 44px;
+                line-height: 44px;
+            }
+        }
+
+        /* Image loading optimization */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Card hover effects */
+        .card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Button hover effects */
+        .btn {
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background-color: var(--primary-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <!-- Using text for logo, in reality would be an image -->
+                <span>Nepal Health</span>
+                <!-- Heart-cross icon placeholder -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#0891B2"/>
+                </svg>
+            </div>
+
+            <!-- Mobile Navigation Toggle -->
+            <div class="mobile-nav-toggle" id="mobileNavToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="navbar-menu" id="navbarMenu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="departments.html">Departments</a>
+                <a href="find-doctor.html">Doctors</a>
+                <a href="services.html">Services</a>
+                <a href="health-packages.html">Packages</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="navbar-actions">
+                <div class="language-switcher">
+                    EN
+                    <span>|</span>
+                    नेपाली
+                </div>
+                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                <div class="emergency-phone">
+                    <!-- Phone icon placeholder -->
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#EF4444"/>
+                    </svg>
+                    <span>+977-1-5970032</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Health, Our Priority</h1>
+            <p class="lead">Nepal's Trusted Multi-Specialty Hospital — Advanced Care, Compassionate Hearts</p>
+            <div class="cta-buttons">
+                <a href="appointment-booking.html" class="btn btn-primary btn-lg">Book Appointment</a>
+                <a href="find-doctor.html" class="btn btn-outline btn-lg">Find Doctor</a>
+            </div>
+            <div class="trust-badges">
+                <div class="badge badge-primary">NABH Accredited</div>
+                <div class="badge badge-primary">24/7 Emergency</div>
+                <div class="badge badge-primary">50+ Doctors</div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Using actual image for doctor with patient -->
+            <img src="assets/images/doctor-with-patient.jpg" alt="Doctor with patient" loading="lazy">
+            <!-- Floating cards -->
+            <div class="floating-cards" style="position: absolute; bottom: 20px; right: 20px; display: flex; gap: 16px;">
+                <div class="card" style="width: 180px; text-align: center; padding: 16px; background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-standard);">
+                    <div style="font-size: 24px; margin-bottom: 8px; color: var(--primary);">⭐</div>
+                    <div>4.8 Rating</div>
+                </div>
+                <div class="card" style="width: 180px; text-align: center; padding: 16px; background: white; border-radius: var(--radius-card); box-shadow: var(--shadow-standard);">
+                    <div style="font-size: 24px; margin-bottom: 8px; color: var(--primary);">🏥</div>
+                    <div>25+ Years</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+        <div class="container" style="max-width: 1440px; margin: 0 auto; padding: var(--space-4);">
+            <h2 style="text-align: center; margin-bottom: var(--space-6);">Quick Actions</h2>
+            <div class="quick-actions-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-4);">
+                <div class="quick-action-card" style="text-align: center; padding: var(--space-4); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <img src="assets/icons/calendar.svg" alt="Calendar" aria-hidden="true" style="width: 48px; height: 48px; margin-bottom: var(--space-3);">
+                    <h4>Book Appointment</h4>
+                    <p>Schedule your visit with our specialists</p>
+                </div>
+                <div class="quick-action-card" style="text-align: center; padding: var(--space-4); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <img src="assets/icons/stethoscope.svg" alt="Stethoscope" aria-hidden="true" style="width: 48px; height: 48px; margin-bottom: var(--space-3);">
+                    <h4>Find a Doctor</h4>
+                    <p>Search for the right specialist</p>
+                </div>
+                <div class="quick-action-card" style="text-align: center; padding: var(--space-4); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <img src="assets/icons/phone.svg" alt="Phone" aria-hidden="true" style="width: 48px; height: 48px; margin-bottom: var(--space-3);">
+                    <h4>Emergency 24/7</h4>
+                    <p>Immediate medical assistance</p>
+                </div>
+                <div class="quick-action-card" style="text-align: center; padding: var(--space-4); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <img src="assets/icons/heart.svg" alt="Heart" aria-hidden="true" style="width: 48px; height: 48px; margin-bottom: var(--space-3);">
+                    <h4>Health Packages</h4>
+                    <p>Preventive care plans</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Preview -->
+    <section class="about-preview">
+        <div class="container" style="max-width: 1440px; margin: 0 auto; padding: var(--space-4);">
+            <h2 style="text-align: center; margin-bottom: var(--space-6);">About Nepal Health Hospital</h2>
+            <div style="display: flex; gap: var(--space-6); align-items: center; flex-wrap: wrap;">
+                <div class="about-image" style="flex: 1; min-width: 300px;">
+                    <!-- Using actual image for hospital -->
+                    <img src="assets/images/haspital photo.jpg" alt="Hospital Building" loading="lazy">
+                </div>
+                <div class="about-content" style="flex: 1; min-width: 300px;">
+                    <p>Founded in 1998, Nepal Health Hospital has been providing quality healthcare services to the people of Nepal for over two decades. We are committed to delivering advanced medical care with compassion and integrity.</p>
+                    <p>Our state-of-the-art facilities and team of experienced doctors ensure that you receive the best possible treatment in a comfortable and healing environment.</p>
+                    <a href="about.html" class="btn btn-outline">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Departments -->
+    <section class="featured-departments">
+        <div class="container" style="max-width: 1440px; margin: 0 auto; padding: var(--space-4);">
+            <h2 style="text-align: center; margin-bottom: var(--space-6);">Featured Departments</h2>
+            <div class="departments-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-4);">
+                <!-- Department Card -->
+                <div class="card" style="text-align: center; padding: var(--space-4); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <div style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">❤️</div>
+                    <h3>Cardiology</h3>
+                    <div class="badge badge-primary">12+ Doctors</div>
+                    <a href="departments.html#cardiology" class="btn btn-outline">View Details →</a>
+                </div>
+                <!-- Repeat for other departments -->
+                <div class="card" style="text-align: center; padding: var(--space-4); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <div style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">🧠</div>
+                    <h3>Neurology</h3>
+                    <div class="badge badge-primary">12+ Doctors</div>
+                    <a href="departments.html#neurology" class="btn btn-outline">View Details →</a>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--space-4); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <div style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">🦴</div>
+                    <h3>Orthopedics</h3>
+                    <div class="badge badge-primary">12+ Doctors</div>
+                    <a href="departments.html#orthopedics" class="btn btn-outline">View Details →</a>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--space-4); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <div style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">👶</div>
+                    <h3>Pediatrics</h3>
+                    <div class="badge badge-primary">12+ Doctors</div>
+                    <a href="departments.html#pediatrics" class="btn btn-outline">View Details →</a>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--space-4); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <div style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">👩‍⚕️</div>
+                    <h3>Gynecology</h3>
+                    <div class="badge badge-primary">12+ Doctors</div>
+                    <a href="departments.html#gynecology" class="btn btn-outline">View Details →</a>
+                </div>
+                <div class="card" style="text-align: center; padding: var(--space-4); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <div style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">🩺</div>
+                    <h3>General Medicine</h3>
+                    <div class="badge badge-primary">12+ Doctors</div>
+                    <a href="departments.html#general-medicine" class="btn btn-outline">View Details →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Doctors Carousel -->
+    <section class="top-doctors">
+        <div class="container" style="max-width: 1440px; margin: 0 auto; padding: var(--space-4);">
+            <h2 style="text-align: center; margin-bottom: var(--space-6);">Top Doctors</h2>
+            <div class="doctors-carousel" style="display: flex; gap: var(--space-4); overflow-x: auto; padding-bottom: var(--space-3);">
+                <!-- Doctor Card 1 -->
+                <div class="card" style="flex: 0 0 280px; text-align: center; padding: var(--space-3); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <!-- Using doctor team image for first doctor -->
+                    <img src="assets/images/doctor-team.jpg" alt="Dr. Ramesh Sharma" loading="lazy" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-3); border: 3px solid var(--primary);">
+                    <h4>Dr. Ramesh Sharma</h4>
+                    <p class="text-sm text-muted">Senior Cardiologist</p>
+                    <div class="badge badge-primary">Cardiology</div>
+                    <p><strong>18+ Years Experience</strong></p>
+                    <div class="rating" style="margin: var(--space-2) 0;">⭐⭐⭐⭐⭐ 4.8</div>
+                    <a href="doctor-profile.html" class="btn btn-outline">View Profile</a>
+                    <a href="appointment-booking.html" class="btn btn-primary mt-2">Book Now</a>
+                </div>
+                <!-- Doctor Card 2 -->
+                <div class="card" style="flex: 0 0 280px; text-align: center; padding: var(--space-3); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <!-- Using doctor with patient image for second doctor -->
+                    <img src="assets/images/doctor-with-patient.jpg" alt="Dr. Sita Devi" loading="lazy" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-3); border: 3px solid var(--primary);">
+                    <h4>Dr. Sita Devi</h4>
+                    <p class="text-sm text-muted">Senior Neurologist</p>
+                    <div class="badge badge-primary">Neurology</div>
+                    <p><strong>15+ Years Experience</strong></p>
+                    <div class="rating" style="margin: var(--space-2) 0;">⭐⭐⭐⭐⭐ 4.7</div>
+                    <a href="doctor-profile.html" class="btn btn-outline">View Profile</a>
+                    <a href="appointment-booking.html" class="btn btn-primary mt-2">Book Now</a>
+                </div>
+                <!-- Doctor Card 3 -->
+                <div class="card" style="flex: 0 0 280px; text-align: center; padding: var(--space-3); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <!-- Using doctor award image for third doctor -->
+                    <img src="assets/images/doctor-award.jpg" alt="Dr. Krishna Tamang" loading="lazy" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-3); border: 3px solid var(--primary);">
+                    <h4>Dr. Krishna Tamang</h4>
+                    <p class="text-sm text-muted">Senior Orthopedic Surgeon</p>
+                    <p><strong>20+ Years Experience</strong></p>
+                    <div class="rating" style="margin: var(--space-2) 0;">⭐⭐⭐⭐⭐ 4.9</div>
+                    <a href="doctor-profile.html" class="btn btn-outline">View Profile</a>
+                    <a href="appointment-booking.html" class="btn btn-primary mt-2">Book Now</a>
+                </div>
+                <!-- Doctor Card 4 -->
+                <div class="card" style="flex: 0 0 280px; text-align: center; padding: var(--space-3); background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <!-- Using health camp image for fourth doctor -->
+                    <img src="assets/images/health-camp.jpg" alt="Dr. Priya Shah" loading="lazy" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-3); border: 3px solid var(--primary);">
+                    <h4>Dr. Priya Shah</h4>
+                    <p class="text-sm text-muted">Senior Gynecologist</p>
+                    <p><strong>12+ Years Experience</strong></p>
+                    <div class="rating" style="margin: var(--space-2) 0;">⭐⭐⭐⭐⭐ 4.6</div>
+                    <a href="doctor-profile.html" class="btn btn-outline">View Profile</a>
+                    <a href="appointment-booking.html" class="btn btn-primary mt-2">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Counter -->
+    <section class="stats-counter">
+        <div class="container" style="max-width: 1440px; margin: 0 auto; padding: var(--space-4);">
+            <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-4); text-align: center;">
+                <div class="stat">
+                    <span class="stat-number" style="font-size: 2.5rem; font-weight: 600; color: var(--primary);">50+</span>
+                    <span class="stat-label">Doctors</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" style="font-size: 2.5rem; font-weight: 600; color: var(--primary);">10,000+</span>
+                    <span class="stat-label">Patients</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" style="font-size: 2.5rem; font-weight: 600; color: var(--primary);">25+</span>
+                    <span class="stat-label">Years</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-icon" style="font-size: 2.5rem; color: var(--primary);">🚑</span>
+                    <span class="stat-label">24/7 Emergency</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Packages -->
+    <section class="health-packages">
+        <div class="container" style="max-width: 1440px; margin: 0 auto; padding: var(--space-4);">
+            <h2 style="text-align: center; margin-bottom: var(--space-6);">Health Packages</h2>
+            <div class="packages-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-4);">
+                <!-- Basic Package -->
+                <div class="package-card" style="background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <h3>Basic</h3>
+                    <div class="package-price" style="font-size: 1.8rem; font-weight: 600; color: var(--primary); margin: var(--space-3) 0;">NPR 2,500</div>
+                    <ul class="package-features" style="list-style: none; padding: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Complete Blood Count (CBC)</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Blood Sugar (Fasting & PP)</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Lipid Profile</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Liver Function Test</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Kidney Function Test</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Urinalysis</li>
+                    </ul>
+                    <a href="health-packages.html" class="btn btn-outline w-100">Book Now</a>
+                </div>
+                <!-- Comprehensive Package (Popular) -->
+                <div class="package-card popular" style="background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border); position: relative;">
+                    <h3>Comprehensive</h3>
+                    <div class="package-price" style="font-size: 2rem; font-weight: 600; color: var(--primary); margin: var(--space-3) 0;">NPR 7,500</div>
+                    <span class="badge badge-success" style="position: absolute; top: -10px; right: -10px; background-color: var(--success); color: var(--surface); padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">POPULAR</span>
+                    <ul class="package-features" style="list-style: none; padding: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Everything in Basic Package</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Thyroid Function Test</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Vitamin D Deficiency Test</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Vitamin B12 Deficiency Test</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Chest X-Ray</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> ECG (Electrocardiogram)</li>
+                    </ul>
+                    <a href="health-packages.html" class="btn btn-primary w-100">Book Now</a>
+                </div>
+                <!-- Premium Package -->
+                <div class="package-card" style="background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border);">
+                    <h3>Premium</h3>
+                    <div class="package-price" style="font-size: 2rem; font-weight: 600; color: var(--primary); margin: var(--space-3) 0;">NPR 12,000</div>
+                    <ul class="package-features" style="list-style: none; padding: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Everything in Standard Package</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Abdomen Ultrasound</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Pap Smear (For Women) / PSA Test (For Men)</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Stress Test (TMT)</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Consultation with Physician</li>
+                        <li style="display: flex; align-items: center; margin-bottom: var(--space-2);"><img src="assets/icons/check.svg" alt="check" style="width: 20px; height: 20px; margin-right: var(--space-2);"> Dietician Consultation</li>
+                    </ul>
+                    <a href="health-packages.html" class="btn btn-outline w-100">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Slider -->
+    <section class="testimonials">
+        <div class="container" style="max-width: 1440px; margin: 0 auto; padding: var(--space-4);">
+            <h2 style="text-align: center; margin-bottom: var(--space-6);">What Our Patients Say</h2>
+            <div class="testimonials-container" style="display: flex; gap: var(--space-4); overflow-x: auto; padding-bottom: var(--space-3);">
+                <!-- Testimonial Card 1 -->
+                <div class="testimonial-card" style="flex: 0 0 320px; text-align: center; background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border); padding: var(--space-4);">
+                    <!-- Using doctor team image for testimonial -->
+                    <img src="assets/images/doctor-team.jpg" alt="Ramesh Sharma" loading="lazy" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-3); border: 3px solid var(--primary);">
+                    <h4>Ramesh Sharma</h4>
+                    <p>Cardiology Treatment</p>
+                    <div class="rating" style="margin: var(--space-2) 0; color: var(--warning);">⭐⭐⭐⭐⭐</div>
+                    <p>"The care I received was exceptional. The doctors and staff were professional and compassionate throughout my treatment."</p>
+                </div>
+                <!-- Testimonial Card 2 -->
+                <div class="testimonial-card" style="flex: 0 0 320px; text-align: center; background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border); padding: var(--space-4);">
+                    <!-- Using doctor with patient image for testimonial -->
+                    <img src="assets/images/doctor-with-patient.jpg" alt="Sita Devi" loading="lazy" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-3); border: 3px solid var(--primary);">
+                    <h4>Sita Devi</h4>
+                    <p>Neurology Treatment</p>
+                    <div class="rating" style="margin: var(--space-2) 0; color: var(--warning);">⭐⭐⭐⭐⭐</div>
+                    <p>"I was impressed by the quick response and effective treatment during my emergency visit. Thank you for saving my life."</p>
+                </div>
+                <!-- Testimonial Card 3 -->
+                <div class="testimonial-card" style="flex: 0 0 320px; text-align: center; background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border); padding: var(--space-4);">
+                    <!-- Using doctor award image for testimonial -->
+                    <img src="assets/images/doctor-award.jpg" alt="Krishna Tamang" loading="lazy" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin: 0 auto var(--space-3); border: 3px solid var(--primary);">
+                    <h4>Krishna Tamang</h4>
+                    <p>Orthopedic Surgery</p>
+                    <div class="rating" style="margin: var(--space-2) 0; color: var(--warning);">⭐⭐⭐⭐⭐</div>
+                    <p>"The surgery went smoothly and the recovery was faster than expected. Highly recommend this hospital."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Events -->
+    <section class="news-events">
+        <div class="container" style="max-width: 1440px; margin: 0 auto; padding: var(--space-4);">
+            <h2 style="text-align: center; margin-bottom: var(--space-6);">News & Events</h2>
+            <div class="news-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-4);">
+                <!-- News Card 1 -->
+                <div class="news-card" style="background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border); overflow: hidden;">
+                    <!-- Using health camp image for news -->
+                    <img src="assets/images/health-camp.jpg" alt="Health Camp" loading="lazy">
+                    <div style="padding: var(--space-4);">
+                        <h4>Free Health Camp in Rural Kathmandu</h4>
+                        <p>July 15, 2026</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+                <!-- News Card 2 -->
+                <div class="news-card" style="background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border); overflow: hidden;">
+                    <!-- Using doctor award image for news -->
+                    <img src="assets/images/doctor-award.jpg" alt="New Equipment" loading="lazy">
+                    <div style="padding: var(--space-4);">
+                        <h4>New MRI Machine Installed</h4>
+                        <p>July 10, 2026</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+                <!-- News Card 3 -->
+                <div class="news-card" style="background: var(--surface); border-radius: var(--radius-card); box-shadow: var(--shadow-standard); border: 1px solid var(--border); overflow: hidden;">
+                    <!-- Using hospital photo image for news -->
+                    <img src="assets/images/haspital photo.jpg" alt="Doctor Award" loading="lazy">
+                    <div style="padding: var(--space-4);">
+                        <h4>Doctor Wins National Award</h4>
+                        <p>July 5, 2026</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Need Urgent Care? Call 24/7 Helpline</h2>
+            <div class="phone-number" style="font-size: 1.5rem; font-weight: 600; margin: var(--space-3) 0; color: var(--error);">+977-1-5970032</div>
+            <a href="#" class="btn btn-white btn-lg">Call Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content" style="display: flex; flex-wrap: wrap; gap: var(--space-6); padding: var(--space-6) 0; background: var(--background);">
+            <div class="footer-col" style="flex: 1; min-width: 250px;">
+                <div class="footer-logo" style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+                    <span>Nepal Health</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#CFFAFE"/>
+                    </svg>
+                </div>
+                <p>Nepal Health Hospital is committed to providing exceptional healthcare services to the community.</p>
+                <div class="social-icons" style="margin-top: var(--space-3); display: flex; gap: var(--space-2);">
+                    <!-- Social media icons placeholders -->
+                    <span style="font-size: 24px;">📘</span>
+                    <span style="font-size: 24px;">📷</span>
+                    <span style="font-size: 24px;">💼</span>
+                    <span style="font-size: 24px;">▶️</span>
+                    <span style="font-size: 24px;">🐦</span>
+                </div>
+            </div>
+            <div class="footer-col" style="flex: 1; min-width: 200px;">
+                <h3>Quick Links</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="about.html" style="color: var(--text-body); margin-bottom: var(--space-2);">About Us</a></li>
+                    <li><a href="find-doctor.html" style="color: var(--text-body); margin-bottom: var(--space-2);">Find Doctor</a></li>
+                    <li><a href="appointment-booking.html" style="color: var(--text-body); margin-bottom: var(--space-2);">Book Appointment</a></li>
+                    <li><a href="health-packages.html" style="color: var(--text-body); margin-bottom: var(--space-2);">Health Packages</a></li>
+                    <li><a href="patient-dashboard.html" style="color: var(--text-body); margin-bottom: var(--space-2);">Patient Portal</a></li>
+                </ul
+            </div>
+            <div class="footer-col" style="flex: 1; min-width: 200px;">
+                <h3>Services</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="#" style="color: var(--text-body); margin-bottom: var(--space-2);">OPD</a></li
+                    <li><a href="emergency.html" style="color: var(--text-body); margin-bottom: var(--space-2);">Emergency 24/7</a></li>
+                    <li><a href="#" style="color: var(--text-body); margin-bottom: var(--space-2);">Diagnostics</a></li>
+                    <li><a href="#" style="color: var(--text-body); margin-bottom: var(--space-2);">Pharmacy</a></li>
+                    <li><a href="#" style="color: var(--text-body); margin-bottom: var(--space-2);">Ambulance</a></li>
+                    <li><a href="#" style="color: var(--text-body); margin-bottom: var(--space-2);">Lab</a></li>
+                </ul>
+            </div>
+            <div class="footer-col" style="flex: 1; min-width: 200px;">
+                <h3>Contact</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li>Maharajgunj, Kathmandu</li>
+                    <li>+977-1-5970032</li>
+                    <li>info@nepalhealth.com</li>
+                    <li>Monday - Saturday: 8:00 AM - 8:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border-top: 1px solid var(--border);">
+            <div>
+                © 2024 Nepal Health Hospital. All rights reserved.
+            </div>
+            <div>
+                <a href="#" style="color: var(--text-body); margin-right: var(--space-3);">Privacy Policy</a> | <a href="#" style="color: var(--text-body);">Terms of Service</a>
+            </div>
+            <div class="footer-logos" style="display: flex; gap: var(--space-2);">
+                <!-- Payment gateway logos -->
+                <span style="font-size: 24px;">💳</span>
+                <span style="font-size: 24px;">💳</span>
+                <span style="font-size: 24px;">💳</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Emergency Button (Mobile) -->
+    <button class="emergency-button-mobile" aria-label="Call Emergency">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#FFFFFF"/>
+        </svg>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Mobile Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNavToggle = document.getElementById('mobileNavToggle');
+            const navbarMenu = document.getElementById('navbarMenu');
+
+            mobileNavToggle.addEventListener('click', function() {
+                navbarMenu.classList.toggle('active');
+                // Animate hamburger to X
+                const spans = mobileNavToggle.querySelectorAll('span');
+                spans.forEach(span => span.classList.toggle('active'));
+            });
+
+            // Close mobile menu when clicking a link
+            const navLinks = navbarMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navbarMenu.classList.remove('active');
+                    const spans = mobileNavToggle.querySelectorAll('span');
+                    spans.forEach(span => span.classList.remove('active'));
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!navbarMenu.contains(event.target) && !mobileNavToggle.contains(event.target)) {
+                    navbarMenu.classList.remove('active');
+                    const spans = mobileNavToggle.querySelectorAll('span');
+                    spans.forEach(span => span.classList.remove('active'));
+                }
+            });
+        });
+
+        // Lazy loading for images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+            if ('IntersectionObserver' in window) {
+                const lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            const lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.removeAttribute('data-src');
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            } else {
+                // Fallback for browsers without IntersectionObserver
+                lazyImages.forEach(function(img) {
+                    img.src = img.dataset.src;
+                });
+            }
+        });
+
+        // Add active class to hamburger menu spans when clicked
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNavToggle = document.getElementById('mobileNavToggle');
+            if (mobileNavToggle) {
+                mobileNavToggle.addEventListener('click', function() {
+                    this.querySelectorAll('span').forEach(span => {
+                        span.classList.toggle('active');
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

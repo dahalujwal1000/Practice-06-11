@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments - Nepal Health Hospital</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <span>Nepal Health</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#0891B2"/>
+                </svg>
+            </div>
+            <nav class="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="departments.html" class="active">Departments</a>
+                <a href="find-doctor.html">Doctors</a>
+                <a href="services.html">Services</a>
+                <a href="health-packages.html">Packages</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="navbar-actions">
+                <div class="language-switcher">
+                    EN
+                    <span>|</span>
+                    नेपाली
+                </div>
+                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                <div class="emergency-phone">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.29.4 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#EF4444"/>
+                    </svg>
+                    <span>+977-1-5970032</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-container" style="background-color: var(--background); padding: var(--space-3) var(--space-4);">
+        <div class="container" style="max-width: 1440px; margin: 0 auto;">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator">></span>
+                <span>Departments</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="departments-header" style="padding: var(--space-6) var(--space-4); background-color: var(--background); text-align: center;">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <h1>Our Centers of Excellence</h1>
+                <p>Comprehensive medical care across all specialties</p>
+            </div>
+        </section>
+
+        <!-- Filter Bar (Sticky on mobile) -->
+        <div class="filter-bar" style="position: sticky; top: 72px; background-color: var(--surface); z-index: 800; border-bottom: 1px solid var(--border); padding: var(--space-3) var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center;">
+            <div class="search-box" style="flex: 1 1 200px; min-width: 200px;">
+                <input type="text" class="input" placeholder="Search departments...">
+            </div>
+            <div class="filter-pills" style="flex: 2 1 300px; display: flex; flex-wrap: wrap; gap: var(--space-1);">
+                <button class="filter-pill active">All</button>
+                <button class="filter-pill">Clinical</button>
+                <button class="filter-pill">Surgical</button>
+                <button class="filter-pill">Diagnostic</button>
+            </div>
+        </div>
+
+        <!-- Departments Grid -->
+        <section class="departments-grid" style="padding: var(--space-6) var(--space-4);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4);">
+                    <!-- Department Card: Cardiology -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">❤️</div>
+                        <h3>Cardiology</h3>
+                        <p class="text-body" style="flex-grow: 1;">Comprehensive heart care from preventive cardiology to advanced interventional procedures and cardiac surgery.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">12+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: Neurology -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">🧠</div>
+                        <h3>Neurology</h3>
+                        <p class="text-body" style="flex-grow: 1;">Expert diagnosis and treatment of neurological disorders including stroke, epilepsy, and neurodegenerative diseases.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">10+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: Orthopedics -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">🦴</div>
+                        <h3>Orthopedics</h3>
+                        <p class="text-body" style="flex-grow: 1;">Advanced joint replacement, sports medicine, spine care, and trauma management.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">15+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: Pediatrics -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">👶</div>
+                        <h3>Pediatrics</h3>
+                        <p class="text-body" style="flex-grow: 1;">Comprehensive care for infants, children, and adolescents including neonatal intensive care.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">8+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: Gynecology -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">👩‍⚕️</div>
+                        <h3>Gynecology</h3>
+                        <p class="text-body" style="flex-grow: 1;">Women's health services including obstetrics, fertility treatment, and minimally invasive surgery.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">10+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: Dermatology -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">💆‍♀️</div>
+                        <h3>Dermatology</h3>
+                        <p class="text-body" style="flex-grow: 1;">Medical and cosmetic dermatology services for skin, hair, and nail conditions.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">5+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: ENT -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">👂</div>
+                        <h3>ENT (Otolaryngology)</h3>
+                        <p class="text-body" style="flex-grow: 1;">Comprehensive ear, nose, and throat care including hearing and balance disorders.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">6+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: Ophthalmology -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">👁️</div>
+                        <h3>Ophthalmology</h3>
+                        <p class="text-body" style="flex-grow: 1;">Advanced eye care including cataract surgery, glaucoma treatment, and retinal disorders.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">7+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: General Medicine -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">🩺</div>
+                        <h3>General Medicine</h3>
+                        <p class="text-body" style="flex-grow: 1;">Primary care and management of chronic diseases like diabetes, hypertension, and infectious diseases.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">20+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: Gastroenterology -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">🥗</div>
+                        <h3>Gastroenterology</h3>
+                        <p class="text-body" style="flex-grow: 1;">Digestive health services including endoscopy, liver disease treatment, and nutrition support.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">8+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: Urology -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">💧</div>
+                        <h3>Urology</h3>
+                        <p class="text-body" style="flex-grow: 1;">Comprehensive care for urinary tract and male reproductive system disorders.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">7+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: Psychiatry -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">🧠</div>
+                        <h3>Psychiatry</h3>
+                        <p class="text-body" style="flex-grow: 1;">Mental health services including diagnosis, treatment, and counseling for various psychiatric conditions.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">6+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: Oncology -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">🎗️</div>
+                        <h3>Oncology</h3>
+                        <p class="text-body" style="flex-grow: 1;">Comprehensive cancer care including medical, surgical, and radiation oncology services.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">9+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                    <!-- Department Card: Dental -->
+                    <div class="card" style="display: flex; flex-direction: column; height: 100%;">
+                        <div class="icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-3); text-align: center;">🦷</div>
+                        <h3>Dental</h3>
+                        <p class="text-body" style="flex-grow: 1;">Full range of dental services from preventive care to advanced restorative and cosmetic procedures.</p>
+                        <div class="badge badge-teal" style="align-self: flex-start; margin-top: auto;">10+ Doctors</div>
+                        <a href="department-detail.html" class="btn btn-outline-link" style="margin-top: auto; color: var(--primary); text-decoration: underline; font-weight: 500;">View Details →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <span>Nepal Health</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#CFFAFE"/>
+                    </svg>
+                </div>
+                <p>Nepal Health Hospital is committed to providing exceptional healthcare services to the community.</p>
+                <div class="social-icons" style="margin-top: var(--space-3);">
+                    <span style="font-size: 24px; margin-right: var(--space-2);">📘</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">📷</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">💼</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">▶️</span>
+                    <span style="font-size: 24px;">🐦</span>
+                </div>
+            </div

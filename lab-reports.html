@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Lab Reports - Nepal Health Hospital</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .reports-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+        .filters-container {
+            display: flex;
+            gap: var(--space-3);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-6);
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 200px;
+        }
+        .filter-label {
+            margin-bottom: var(--space-2);
+            font-weight: 500;
+        }
+        .filter-input,
+        .filter-select {
+            padding: var(--space-2) var(--space-3);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-card);
+            font-size: var(--body-lg);
+        }
+        .report-card {
+            background-color: var(--surface);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-standard);
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-3);
+        }
+        .report-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-heading);
+        }
+        .report-date {
+            color: var(--text-body);
+            font-size: var(--body-sm);
+        }
+        .report-status {
+            padding: var(--space-0) var(--space-2);
+            border-radius: var(--radius-pill);
+            font-size: var(--body-sm);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .status-ready {
+            background-color: #dcfce7; /* green-100 */
+            color: var(--success);
+        }
+        .status-pending {
+            background-color: #fef3c7; /* yellow-100 */
+            color: #d97706; /* yellow-600 */
+        }
+        .report-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-3);
+            margin-bottom: var(--space-3);
+        }
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .detail-label {
+            font-size: var(--body-sm);
+            color: var(--text-body);
+            margin-bottom: var(--space-1);
+        }
+        .detail-value {
+            font-weight: 500;
+        }
+        .report-actions {
+            display: flex;
+            gap: var(--space-2);
+        }
+        .empty-state {
+            text-align: center;
+            padding: var(--space-8) var(--space-4);
+        }
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-4);
+            color: #E5E7EB; /* gray-300 */
+        }
+        .mobile-tab-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: var(--surface);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-body);
+            fontize: var(--body-sm);
+            text-decoration: none;
+        }
+        .tab-item.active {
+            color: var(--primary);
+        }
+        .tab-icon {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <span>Nepal Health</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#0891B2"/>
+                </svg>
+            </div>
+            <nav class="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="departments.html">Departments</a>
+                <a href="find-doctor.html">Doctors</a>
+                <a href="services.html">Services</a>
+                <a href="health-packages.html">Packages</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="navbar-actions">
+                <div class="language-switcher">
+                    EN
+                    <span>|</span>
+                    नेपाली
+                </div>
+                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                <div class="emergency-phone">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#EF4444"/>
+                    </svg>
+                    <span>+977-1-5970032</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Tab Bar (hidden on desktop) -->
+    <div class="mobile-tab-bar">
+        <a href="patient-dashboard.html" class="tab-item">
+            <div class="tab-icon">🏠</div>
+            <div>Home</div>
+        </a>
+        <a href="find-doctor.html" class="tab-item">
+            <div class="tab-icon">👨‍⚕️</div>
+            <div>Doctors</div>
+        </a>
+        <a href="appointments-list.html" class="tab-item">
+            <div class="tab-icon">📅</div>
+            <div>Appointments</div>
+        </a>
+        <a href="lab-reports.html" class="tab-item active">
+            <div class="tab-icon">📋</div>
+            <div>Reports</div>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <div class="tab-icon">👤</div>
+            <div>Profile</div>
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container" style="max-width: 1440px; margin: 0 auto; padding: var(--space-4);">
+            <div class="reports-header">
+                <h2>My Lab Reports</h2>
+                <a href="appointment-booking.html" class="btn btn-outline">Book Checkup</a>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label for="dateRange" class="filter-label">Date Range</label>
+                    <select id="dateRange" class="filter-select">
+                        <option value="">All Time</option>
+                        <option value="today">Today</option>
+                        <option value="week">Last Week</option>
+                        <option value="month">Last Month</option>
+                        <option value="3months">Last 3 Months</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="reportType" class="filter-label">Type</label>
+                    <select id="reportType" class="filter-select">
+                        <option value="">All Types</option>
+                        <option value="blood">Blood Tests</option>
+                        <option value="urine">Urine Tests</option>
+                        <option value="imaging">Imaging</option>
+                        <option value="cardiac">Cardiac Tests</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="status" class="filter-label">Status</label>
+                    <select id="status" class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="ready">Ready</option>
+                        <option value="pending">Pending</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Reports List -->
+            <div class="reports-list">
+                <!-- Report Card -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-info">
+                            <h3 class="report-title">Lipid Profile</h3>
+                            <p class="report-date">Jan 10, 2026</p>
+                        </div>
+                        <div class="report-status status-ready">Ready</div>
+                    </div>
+                    <div class="report-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Total Cholesterol</div>
+                            <div class="detail-value">180 mg/dL</div>
+                            <div class="detail-note" style="font-size: var(--body-sm); color: var(--success);">Desirable</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">HDL Cholesterol</div>
+                            <div class="detail-value">55 mg/dL</div>
+                            <div class="detail-note" style="font-size: var(--body-sm); color: var(--success);">Good</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">LDL Cholesterol</div>
+                            <div class="detail-value">100 mg/dL</div>
+                            <div class="detail-note" style="font-size: var(--body-sm); color: var(--success);">Near Optimal</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Triglycerides</div>
+                            <div class="detail-value">120 mg/dL</div>
+                            <div class="detail-note" style="font-size: var(--body-sm); color: var(--success);">Normal</div>
+                        </div>
+                    </div>
+                    <div class="report-actions">
+                        <a href="#" class="btn btn-outline">View Report</a>
+                        <a href="#" class="btn btn-primary">Download PDF</a>
+                    </div>
+                </div>
+
+                <!-- Report Card -->
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-info">
+                            <h3 class="report-title">Complete Blood Count (CBC)</h3>
+                            <p class="report-date">Jan 8, 2026</p>
+                        </div>
+                        <div class="report-status status-ready">Ready</div>
+                    </div>
+                    <div class="report-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Hemoglobin</div>
+                            <div class="detail-value">14.2 g/dL</div>
+                            <div class="detail-note" style="font-size: var(--body-sm); color: var(--success);">Normal</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">White Blood Cells</div>
+                            <div class="detail-value">7,500 /mcL</div>
+                            <div class="detail-note" style="font-size: var(--body-sm); color: var(--success);">Normal</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Red Blood Cells</div>
+                            <div class="detail-value">4.8 million/mcL</div>
+                            <div class="detail-note" style="font-size: var(--body-sm); color: var(--success);">Normal</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Platelets</div>
+                            <div class="detail-value">250,000 /mcL</div>
+                            <div class="detail-note" style="font-size: var(--body-sm); color: var(--success);">Normal</div>
+                        </div>
+                    </div>
+                    <div class="report-actions">
+                        <a href="#" class="btn btn-outline">View Report</a>
+                        <a href="#" class="btn btn-primary">Download PDF</a>
+                    </div>
+                </div>
+
+                <!-- Report Card -->
+                <div class="report-card">
+                    <divclass="report-header">
+                        <div class="report-info">
+                            <h3 class="report-title">Thyroid Function Test</h3>
+                            <p class="report-date">Jan 5, 2026</p>
+                        </div>
+                        <div class="report-status status-pending">Processing</div>
+                    </div>
+                    <div class="report-details">
+                        <div class="detail-item">
+                            <div class="detail-label">TSH Level</div>
+                            <div class="detail-value">Pending Results</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Free T4</div>
+                            <div class="detail-value">Pending Results</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Free T3</div>
+                            <div class="detail-value">Pending Results</div>
+                        </div>
+                    </div>
+                    <div class="report-actions">
+                        <a href="#" class="btn btn-outline">View Report</a>
+                        <a href="#" class="btn btn-primary disabled">Download PDF</a>
+                    </d

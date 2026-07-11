@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Profile - Dr. Ramesh Sharma - Nepal Health Hospital</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .tabs-container {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: var(--space-4);
+        }
+        .tab {
+            padding: var(--space-2) var(--space-4);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+        }
+        .tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: var(--space-4);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+        .timeline-content {
+            background-color: var(--background);
+            padding: var(--space-3);
+            border-radius: var(--radius-card);
+        }
+        .review-card {
+            background-color: var(--surface);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-standard);
+            padding: var(--space-4);
+            margin-bottom: var(--space-3);
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-2);
+        }
+        .review-stars {
+            color: #fbbf24; /* amber-400 */
+        }
+        .review-date {
+            font-size: var(--body-sm);
+            color: var(--text-body);
+            opacity: 0.7;
+        }
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-4) 0;
+        }
+        .schedule-table th,
+        .schedule-table td {
+            padding: var(--space-2);
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .schedule-table th {
+            background-color: var(--background);
+            font-weight: 600;
+        }
+        .available-slot {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-card);
+            font-size: var(--body-sm);
+        }
+        .booked-slot {
+            background-color: #fee2e2; /* red-100 */
+            color: #ef4444; /* red-500 */
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--radius-card);
+            font-size: var(--body-sm);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <span>Nepal Health</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#0891B2"/>
+                </svg>
+            </div>
+            <nav class="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="departments.html">Departments</a>
+                <a href="find-doctor.html">Doctors</a>
+                <a href="doctor-profile.html" class="active">Doctor Profile</a>
+                <a href="services.html">Services</a>
+                <a href="health-packages.html">Packages</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="navbar-actions">
+                <div class="language-switcher">
+                    EN
+                    <span>|</span>
+                    नेपाली
+                </div>
+                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                <div class="emergency-phone">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#EF4444"/>
+                    </svg>
+                    <span>+977-1-5970032</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-container" style="background-color: var(--background); padding: var(--space-3) var(--space-4);">
+        <div class="container" style="max-width: 1440px; margin: 0 auto;">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator">></span>
+                <a href="find-doctor.html">Find a Doctor</a>
+                <span class="breadcrumb-separator">></span>
+                <span>Dr. Ramesh Sharma</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="doctor-profile-header" style="padding: var(--space-6) var(--space-4); background-color: var(--background);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <div class="header-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: center;">
+                    <div class="doctor-image">
+                        <img src="assets/images/doctor1.jpg" alt="Dr. Ramesh Sharma" style="width: 100%; height: auto; border-radius: var(--radius-card);">
+                    </div>
+                    <div class="doctor-details">
+                        <h1>Dr. Ramesh Sharma</h1>
+                        <div class="credentials" style="margin: var(--space-2) 0; color: var(--text-body);">
+                            MBBS, MD, DM Cardiology
+                        </div>
+                        <div class="doctor-meta" style="display: flex; gap: var(--space-3); margin: var(--space-2) 0; flex-wrap: wrap;">
+                            <span class="badge badge-teal">Cardiology</span>
+                            <span class="designation">Senior Cardiologist</span>
+                            <span class="experience">18+ Years Experience</span>
+                        </div>
+                        <div class="rating" style="margin: var(--space-2) 0;">
+                            <div class="stars" style="font-size: 24px; margin-bottom: var(--space-2);">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-number" style="font-size: 24px; font-weight: 600;">4.8</div>
+                            <div class="review-count" style="color: var(--text-body);">(234 reviews)</div>
+                        </div>
+                        <div class="languages" style="margin: var(--space-2) 0; display: flex; gap: var(--space-1); flex-wrap: wrap;">
+                            <span class="language-tag">English</span>
+                            <span class="language-tag">नेपाली</span>
+                            <span class="language-tag">Hindi</span>
+                        </div>
+                        <div class="doctor-actions" style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                            <a href="tel:+97715970032" class="btn btn-outline">Call Doctor</a>
+                            <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                        </div>
+                        <div class="share-icons" style="margin-top: var(--space-3);">
+                            <span style="font-size: 24px; margin-right: var(--space-2);">📘</span>
+                            <span style="font-size: 24px; margin-right: var(--space-2);">📷</span>
+                            <span style="font-size: 24px; margin-right: var(--space-2);">💼</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabs -->
+        <section class="doctor-profile-tabs" style="padding: 0 var(--space-4);">
+            <div class="container" style="max-width: 1440px; margin: 0 auto;">
+                <div class="tabs-container">
+                    <div class="tab active" data-tab="about">About</div>
+                    <div class="tab" data-tab="experience">Experience</div>
+                    <div class="tab" data-tab="services">Services</div>
+                    <div class="tab" data-tab="reviews">Reviews</div>
+                    <div class="tab" data-tab="timing">Timing</div>
+                </div>
+
+                <!-- About Tab -->
+                <div class="tab-content active" id="about-tab">
+                    <div class="tab-content-inner" style="padding: var(--space-6) var(--space-4);">
+                        <h2>About Dr. Ramesh Sharma</h2>
+                        <p>Dr. Ramesh Sharma is a highly acclaimed cardiologist with over 18 years of experience in interventional cardiology and preventive cardiac care. He graduated from Kathmandu University with his MBBS, completed his MD in Internal Medicine from Tribhuvan University, and obtained his DM in Cardiology from the prestigious All India Institute of Medical Sciences (AIIMS), Delhi.</p>
+                        <p>Dr. Sharma specializes in complex coronary interventions, structural heart disease treatments, and preventive cardiology. He has performed over 5,000 angiographies and 3,000 angioplasties throughout his career. His approach combines cutting-edge medical technology with compassionate patient care, ensuring each patient receives personalized treatment plans.</p>
+                        <h3>Specializations</h3>
+                        <ul class="specialties-list" style="margin: var(--space-3) 0; padding-left: var(--space-4);">
+                            <li>Interventional Cardiology</li>
+                            <li>Preventive Cardiology</li>
+                            <li>Heart Failure Management</li>
+                            <li>Valvular Heart Disease</li>
+                            <li>Cardiac Imaging</li>
+                            <li>Preventive Lipid Management</li>
+                        </ul>
+                        <h3>Awards & Recognition</h3>
+                        <ul class="awards-list" style="margin: var(--space-3) 0; padding-left: var(--space-4);">
+                            <li>Best Cardiologist Award - Nepal Medical Association (2022)</li>
+                            <li>Excellence in Interventional Cardiology - Asian Heart Institute (2021)</li>
+                            <li>Young Cardiologist Award - SAARC Cardiac Society (2018)</li>
+                            <li>Gold Medal in MD Cardiology - Tribhuvan University (2010)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience Tab -->
+                <div class="tab-content" id="experience-tab">
+                    <div class="tab-content-inner" style="padding: var(--space-6) var(--space-4);">
+                        <h2>Professional Experience</h2>
+                        <div class="experience-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h4>Senior Cardiologist</h4>
+                                    <p class="institution">Nepal Health Hospital, Kathmandu</p>
+                                    <p class="period">2020 - Present</p>
+                                    <p>Leading the cardiology department, performing complex interventional procedures, and mentoring junior cardiologists.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h4>Associate Professor of Cardiology</h4>
+                                    <p class="institution">Kathmandu University School of Medical Sciences</p>
+                                    <p class="period">2018 - 2020</p>
+                                    <p>Teaching cardiology to medical students and supervising research projects.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h4>Consultant Cardiologist</h4>
+                                    <p class="institution">Bir Hospital, Kathmandu</p>
+                                    <p class="period">2015 - 2020</p>
+                                    <p>Providing clinical services in cardiology and performing diagnostic and interventional procedures.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h4>Senior Registrar in Cardiology</h4>
+                                    <p class="institution">All India Institute of Medical Sciences (AIIMS), Delhi</p>
+                                    <p class="period">2012 - 2015</p>
+                                    <p>Advanced training in interventional cardiology and cardiac electrophysiology.</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <h4>Medical Officer</h4>
+                                    <p class="institution">Bir Hospital, Kathmandu</p>
+                                    <p class="period">2010 - 2012</p>
+                                    <p>Early career experience in general medicine and cardiology.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2>Fellowships & Training</h2>
+                        <div class="fellowships-list" style="margin: var(--space-3) 0; padding-left: var(--space-4);">
+                            <li>Fellowship in Interventional Cardiology - Cleveland Clinic, USA (2016-2017)</li>
+                            <li>Training in Structural Heart Interventions - Paris Cardiovascular Center, France (2015)</li>
+                            <li>Advanced Cardiac Imaging Workshop - European Society of Cardiology (2014)</li>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Tab -->
+                <div class="tab-content" id="services-tab">
+                    <div class="tab-content-inner" style="padding: var(--space-6) var(--space-4);">
+                        <h2>Services Provided</h2>
+                        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-4);">
+                            <!-- Service Card -->
+                            <div class="service-card">
+                                <div class="service-icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">💓</div>
+                                <h3>Diagnostic Angiography</h3>
+                                <p>Coronary angiography to detect blockages in heart arteries using minimally invasive catheter techniques.</p>
+                            </div>
+                            <!-- Service Card -->
+                            <div class="service-card">
+                                <div class="service-icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">🎈</div>
+                                <h3>Angioplasty & Stenting</h3>
+                                <p>Balloon angioplasty with stent placement to open blocked coronary arteries and restore blood flow.</p>
+                            </div>
+                            <!-- Service Card -->
+                            <div class="service-card">
+                                <div class="service-icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">🫀</div>
+                                <h3>Pacemaker Implantation</h3>
+                                <p>Insertion of pacemakers to regulate heart rhythm in patients with arrhythmias or heart block.</p>
+                            </div>
+                            <!-- Service Card -->
+                            <div class="service-card">
+                                <div class="service-icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">🩺</div>
+                                <h3>Heart Failure Management</h3>
+                                <p>Comprehensive care for patients with heart failure including medication optimization and device therapy.</p>
+                            </div>
+                            <!-- Service Card -->
+                            <div class="service-card">
+                                <div class="service-icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">🫁</div>
+                                <h3>Stress Testing</h3>
+                                <p>Exercise and pharmacological stress tests to evaluate heart function under physical stress.</p>
+                            </div>
+                            <!-- Service Card -->
+                            <div class="service-card">
+                                <div class="service-icon" style="font-size: 36px; color: var(--primary); margin-bottom: var(--space-2);">📊</div>
+                                <h3>Echocardiography</h3>
+                                <p>Ultrasound imaging of the heart to assess structure, function, and blood flow.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Tab -->
+                <div class="tab-content" id="reviews-tab">
+                    <div class="tab-content-inner" style="padding: var(--space-6) var(--space-4);">
+                        <h2>Patient Reviews</h2>
+                        <div class="rating-summary" style="text-align: center; margin-bottom: var(--space-6);">
+                            <div class="overall-rating" style="font-size: 48px; margin-bottom: var(--space-2);">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-value">4.8</span>
+                            </div>
+                            <div class="rating-breakdown" style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
+                                <div class="rating-item">
+                                    <div class="label">5 Star</div>
+                                    <div class="percentage">78%</div>
+                                </div>
+                                <div class="rating-item">
+                                    <div class="label">4 Star</div>
+                                    <div class="percentage">15%</div>
+                                </div>
+                                <div class="rating-item">
+                                    <div class="label">3 Star</div>
+                                    <div class="percentage">5%</div>
+                                </div>
+                                <div class="rating-item">
+                                    <div class="label">2 Star</div>
+                                    <div class="percentage">1%</div>
+                                </div>
+                                <div class="rating-item">
+                                    <div class="label">1 Star</div>
+                                    <div class="percentage">1%</div>
+                                </div>
+                            </div>
+                            <div class="total-reviews" style="margin-top: var(--space-2); color: var(--text-body);">
+                                (234 verified reviews)
+                            </div>
+                        </div>
+
+                        <div class="reviews-list">
+                            <!-- Review Card -->
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <div class="review-info">
+                                        <h4>Sita Devi</h4>
+                                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                                        <span class="review-date">January 15, 2026</span>
+                                    </div>
+                                    <div class="review-actions">
+                                        <span style="font-size: 20px;">⋮</span>
+                                    </div>
+                                </div>
+                                <div class="review-title">Life-saving Angioplasty Procedure</div>
+                                <div class="review-text">
+                                    I came to Nepal Health Hospital with severe chest pain and was diagnosed with a 90% blockage in my LAD artery. Dr. Sharma performed an emergency angioplasty that same day and saved my life. His expertise and calm demeanor gave me confidence throughout the procedure. The entire team was professional and caring.
+                                </div>
+                            </div>
+
+                            <!-- Review Card -->
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <div class="review-info">
+                                        <h4>Prakash Thapa</h4>
+                                        <div class="review-stars">⭐⭐⭐⭐☆</div>
+                                        <span class="review-date">December 3, 2025</span>
+                                    </div>
+                                    <div class="review-actions">
+                                        <span style="font-size: 20px;">⋮</span>
+                                    </div>
+                                </div>
+                                <div class="review-text">
+                                    I've been seeing Dr. Sharma for my hypertension and cholesterol management for the past two years. He takes the time to explain everything clearly and adjusts my medications based on my response. His preventive approach has helped me avoid more serious cardiac issues.
+                                </div>
+                            </div>
+
+                            <!-- Review Card -->
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <div class="review-info">
+                                        <h4>Anjali Shrestha</h4>
+                                        <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                                        <span class="review-date">November 20, 2025</span>
+                                    </div>
+                                    <div class="review-actions">
+                                        <span style="font-size: 20px;">⋮</span>
+                                    </div>
+                                </div>
+                                <div class="review-text">
+                                    My father underwent a complex valve replacement surgery under Dr. Sharma's supervision. The procedure was successful and his recovery has been remarkable. Dr. Sharma's expertise and the excellent post-operative care made a difficult situation much easier for our family.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timing Tab -->
+                <div class="tab-content" id="timing-tab">
+                    <div class="tab-content-inner" style="padding: var(--space-6) var(--space-4);">
+                        <h2>Appointment Schedule</h2>
+
+                        <div class="schedule-section">
+                            <h3>Outpatient Department (OPD) Schedule</h3>
+                            <table class="schedule-table">
+                                <thead>
+                                    <tr>
+                                        <th>Day</th>
+                                        <th>Morning</th>
+                                        <th>Evening</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Monday</td>
+                                        <td><span class="available-slot">9:00 AM - 12:00 PM</span></td>
+                                        <td><span class="available-slot">4:00 PM - 6:00 PM</span></td>
+                                        <td><span class="available-slot">Available</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tuesday</td>
+                                        <td><span class="available-slot">9:00 AM - 12:00 PM</span></td>
+                                        <td><span class="available-slot">4:00 PM - 6:00 PM</span></td>
+                                        <td><span class="available-slot">Available</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wednesday</td>
+                                        <td><span class="available-slot">9:00 AM - 12:00 PM</span></td>
+                                        <td><span class="booked-slot">4:00 PM - 6:00 PM</span></td>
+                                        <td><span class="booked-slot">Partially Booked</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Thursday</td>
+                                        <td><span class="available-slot">9:00 AM - 12:00 PM</span></td>
+                                        <td><span class="available-slot">4:00 PM - 6:00 PM</span></td>
+                                        <td><span class="available-slot">Available</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Friday</td>
+                                        <td><span class="available-slot">9:00 AM - 12:00 PM</span></td>
+                                        <td><span class="available-slot">4:00 PM - 6:00 PM</span></td>
+                                        <td><span class="available-slot">Available</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Saturday</td>
+                                        <td><span class="available-slot">9:00 AM - 12:00 PM</span></td>
+                                        <td>-</td>
+                                        <td><span class="available-slot">Available</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sunday</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td><span class="booked-slot">Closed</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="map-section" style="margin-top: var(--space-6);">
+                            <h3>Location</h3>
+                            <!-- Map placeholder -->
+                            <div style="width: 100%; height: 300px; background-color: var(--border); border-radius: var(--radius-card); display: flex; align-items: center; justify-content: center; margin: var(--space-4) 0;">
+                                <span style="color: var(--text-body); font-size: 18px;">Map showing Nepal Health Hospital location</span>
+                            </div>
+                            <p style="text-align: center; margin-top: var(--space-2);">
+                                Nepal Health Hospital, Maharajgunj, Kathmandu<br>
+                                Landmark: Opposite Maharajgunj Army Camp
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <span>Nepal Health</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#CFFAFE"/>
+                    </svg>
+                </div>
+                <p>Nepal Health Hospital is committed to providing exceptional healthcare services to the community.</p>
+                <div class="social-icons" style="margin-top: var(--space-3);">
+                    <span style="font-size: 24px; margin-right: var(--space-2);">📘</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">📷</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">💼</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">▶️</span>
+                    <span style="font-size: 24px;">🐦</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="departments.html">Departments</a></li>
+                    <li><a href="find-doctor.html">Find Doctor</a></li>
+                    <li><a href="patient-dashboard.html">Patient Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">OPD</a></li>
+                    <li><a href="emergency.html">Emergency 24/7</a></li>
+                    <li><a href="#">Diagnostics</a></li>
+                    <li><a href="#">Pharmacy</a></li>
+                    <li><a href="#">Ambulance</a></li>
+                    <li><a href="#">Lab</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Maharajgunj, Kathmandu</li>
+                    <li>+977-1-5970032</li>
+                    <li>info@nepalhealth.com</li>
+                    <li>Monday - Saturday: 8:00 AM - 8:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>
+                © 2024 Nepal Health Hospital. All rights reserved.
+            </div>
+            <div>
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-logos">
+                <span style="font-size: 24px; margin-right: var(--space-2);">💳</span>
+                <span style="font-size: 24px; margin-right: var(--space-2);">💳</span>
+                <span style="font-size: 24px;">💳</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Emergency Button (Mobile) -->
+    <button class="emergency-button-mobile" aria-label="Call Emergency">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#FFFFFF"/>
+        </svg>
+    </button>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(tc => tc.classList.remove('active'));
+
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+
+                    // Show corresponding content
+                    const tabId = tab.getAttribute('data-tab') + '-tab';
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

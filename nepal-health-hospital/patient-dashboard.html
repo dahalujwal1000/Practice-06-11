@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - Nepal Health Hospital</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+        .stat-card {
+            background-color: var(--surface);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-standard);
+            padding: var(--space-4);
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: var(--space-2);
+            display: block;
+        }
+        .stat-label {
+            color: var(--text-body);
+            font-size: var(--body-lg);
+        }
+        .appointment-card {
+            background-color: var(--surface);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-standard);
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+            display: flex;
+            gap: var(--space-4);
+            align-items: flex-start;
+        }
+        .appointment-doctor-info {
+            flex: 1;
+        }
+        .appointment-actions {
+            display: flex;
+            gap: var(--space-2);
+            margin-top: auto;
+        }
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin-top: var(--space-6);
+        }
+        .quick-action-card {
+            background-color: var(--surface);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-standard);
+            padding: var(--space-4);
+            text-align: center;
+        }
+        .quick-action-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-3);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lab-report-card {
+            background-color: var(--surface);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-standard);
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+        }
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-2);
+        }
+        .report-actions {
+            display: flex;
+            gap: var(--space-2);
+        }
+        .health-tip {
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: var(--space-3);
+            margin: var(--space-4) 0;
+            border-radius: 0 var(--radius-card) var(--radius-card) 0;
+        }
+        .mobile-tab-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: var(--surface);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-body);
+            font-size: var(--body-sm);
+            text-decoration: none;
+        }
+        .tab-item.active {
+            color: var(--primary);
+        }
+        .tab-icon {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <span>Nepal Health</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#0891B2"/>
+                </svg>
+            </div>
+            <nav class="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="departments.html">Departments</a>
+                <a href="find-doctor.html">Doctors</a>
+                <a href="services.html">Services</a>
+                <a href="health-packages.html">Packages</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="navbar-actions">
+                <div class="language-switcher">
+                    EN
+                    <span>|</span>
+                    नेपाली
+                </div>
+                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                <div class="emergency-phone">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#EF4444"/>
+                    </svg>
+                    <span>+977-1-5970032</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Tab Bar (hidden on desktop) -->
+    <div class="mobile-tab-bar">
+        <a href="patient-dashboard.html" class="tab-item active">
+            <div class="tab-icon">🏠</div>
+            <div>Home</div>
+        </a>
+        <a href="find-doctor.html" class="tab-item">
+            <div class="tab-icon">👨‍⚕️</div>
+            <div>Doctors</div>
+        </a>
+        <a href="appointments-list.html" class="tab-item">
+            <div class="tab-icon">📅</div>
+            <div>Appointments</div>
+        </a>
+        <a href="lab-reports.html" class="tab-item">
+            <div class="tab-icon">📋</div>
+            <div>Reports</div>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <div class="tab-icon">👤</div>
+            <div>Profile</div>
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container" style="max-width: 1440px; margin: 0 auto; padding: var(--space-4);">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div class="welcome-message">
+                    <h2>Welcome back, Ramesh! 👋</h2>
+                    <p>Your health dashboard</p>
+                </div>
+                <div class="quick-actions">
+                    <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                    <a href="lab-reports.html" class="btn btn-outline">View Reports</a>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number" style="color: var(--primary);">2</span>
+                    <span class="stat-label">Upcoming Appointments</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" style="color: var(--success);">5</span>
+                    <span class="stat-label">Lab Reports</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" style="color: var(--secondary);">NPR 1,200</span>
+                    <span class="stat-label">Pending Bills</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" style="color: var(--emergency);">3</span>
+                    <span class="stat-label">Active Prescriptions</span>
+                </div>
+            </div>
+
+            <!-- Upcoming Appointment -->
+            <section class="upcoming-appointment" style="margin-bottom: var(--space-6);">
+                <h3>Upcoming Appointment</h3>
+                <div class="appointment-card">
+                    <div class="appointment-image">
+                        <img src="assets/images/doctor1.jpg" alt="Dr. Ramesh Sharma" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <div class="appointment-details">
+                        <h4>Cardiology Consultation</h4>
+                        <p class="doctor-name">Dr. Ramesh Sharma</p>
+                        <p class="appointment-time">Tomorrow, 10:30 AM</p>
+                        <p class="appointment-location">Cardiology Department, 2nd Floor</p>
+                    </div>
+                    <div class="appointment-actions">
+                        <a href="#" class="btn btn-outline">Reschedule</a>
+                        <a href="#" class="btn btn-danger">Cancel</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Lab Reports -->
+            <section class="recent-lab-reports" style="margin-bottom: var(--space-6);">
+                <h3>Recent Lab Reports</h3>
+                <div class="reports-container">
+                    <!-- Report Card -->
+                    <div class="lab-report-card">
+                        <div class="report-header">
+                            <div class="report-info">
+                                <h4>Lipid Profile</h4>
+                                <p class="report-date">Jan 10, 2026</p>
+                            </div>
+                            <div class="report-status">
+                                <span class="badge badge-success">Ready</span>
+                            </div>
+                        </div>
+                        <div class="report-summary">
+                            <p>Total Cholesterol: 180 mg/dL (Desirable)</p>
+                            <p>HDL Cholesterol: 55 mg/dL (Good)</p>
+                            <p>LDL Cholesterol: 100 mg/dL (Near Optimal)</p>
+                            <p>Triglycerides: 120 mg/dL (Normal)</p>
+                        </div>
+                        <div class="report-actions">
+                            <a href="#" class="btn btn-outline btn-sm">View Report</a>
+                            <a href="#" class="btn btn-primary btn-sm">Download PDF</a>
+                        </div>
+                    </div>
+
+                    <!-- Report Card -->
+                    <div class="lab-report-card">
+                        <div class="report-header">
+                            <div class="report-info">
+                                <h4>Complete Blood Count (CBC)</h4>
+                                <p class="report-date">Jan 8, 2026</p>
+                            </div>
+                            <div class="report-status">
+                                <span class="badge badge-success">Ready</span>
+                            </div>
+                        </div>
+                        <div class="report-summary">
+                            <p>Hemoglobin: 14.2 g/dL (Normal)</p>
+                            <p>White Blood Cells: 7,500 /mcL (Normal)</p>
+                            <p>Platelets: 250,000 /mcL (Normal)</p>
+                        </div>
+                        <div class="report-actions">
+                            <a href="#" class="btn btn-outline btn-sm">View Report</a>
+                            <a href="#" class="btn btn-primary btn-sm">Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="view-all-link" style="text-align: right; margin-top: var(--space-2);">
+                    <a href="lab-reports.html" class="text-link">View All Reports →</a>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions-section">
+                <h3>Quick Actions</h3>
+                <div class="quick-actions-grid">
+                    <!-- Quick Action Card -->
+                    <div class="quick-action-card">
+                        <div class="quick-action-icon" style="background-color: var(--primary-light); color: var(--primary);">
+                            📅
+                        </div>
+                        <h4>Appointments</h4>
+                        <p>View, reschedule, or cancel appointments</p>
+                        <a href="appointments-list.html" class="btn btn-outline">Go to Appointments</a>
+                    </div>
+
+                    <!-- Quick Action Card -->
+                    <div class="quick-action-card">
+                        <div class="quick-action-icon" style="background-color: var(--primary-light); color: var(--primary);">
+                            💊
+                        </div>
+                        <h4>Prescriptions</h4>
+                        <p>View and renew prescriptions</p>
+                        <a href="prescriptions.html" class="btn btn-outline">Go to Prescriptions</a>
+                    </div>
+
+                    <!-- Quick Action Card -->
+                    <div class="quick-action-card">
+                        <div class="quick-action-icon" style="background-color: var(--primary-light); color: var(--primary);">
+                            💰
+                        </div>
+                        <h4>Billing</h4>
+                        <p>View and pay bills online</p>
+                        <a href="billing.html" class="btn btn-outline">Go to Billing</a>
+                    </div>
+
+                    <!-- Quick Action Card -->
+                    <div class="quick-action-card">
+                        <div class="quick-action-icon" style="background-color: var(--primary-light); color: var(--primary);">
+                            📋
+                        </div>
+                        <h4>Medical Records</h4>
+                        <p>Access your complete health history</p>
+                        <a href="medical-records.html" class="btn btn-outline">Go to Records</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Health Tips -->
+            <section class="health-tips-section">
+                <h3>Health Tips for You</h3>
+                <div class="health-tip">
+                    <strong>Heart Health Tip:</strong> Try to walk at least 30 minutes a day to maintain cardiovascular health. Regular physical activity can help lower blood pressure and improve cholesterol levels.
+                </div>
+                <div class="health-tip">
+                    <strong>Medication Reminder:</strong> Remember to take your cholesterol medication as prescribed. Setting a daily alarm can help you stay consistent with your treatment plan.
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo">
+                    <span>Nepal Health</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#CFFAFE"/>
+                    </svg>
+                </div>
+                <p>Nepal Health Hospital is committed to providing exceptional healthcare services to the community.</p>
+                <div class="social-icons" style="margin-top: var(--space-3);">
+                    <span style="font-size: 24px; margin-right: var(--space-2);">📘</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">📷</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">💼</span>
+                    <span style="font-size: 24px; margin-right: var(--space-2);">▶️</span>
+                    <span style="font-size: 24px;">🐦</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</hng>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="departments.html">Departments</a></li>
+                    <li><a href="find-doctor.html">Find Doctor</a></li>
+                    <li><a href="patient-dashboard.html">Patient Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">OPD</a></li>
+                    <li><a href="emergency.html">Emergency 24/7</a></li>
+                    <li><a href="#">Diagnostics</a></li>
+                    <li><a href="#">Pharmacy</a></li>
+                    <li><a href="#">Ambulance</a></li>
+                    <li><a href="#">Lab</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Maharajgunj, Kathmandu</li>
+                    <li>+977-1-5970032</li>
+                    <li>info@nepalhealth.com</li>
+                    <li>Monday - Saturday: 8:00 AM - 8:00 PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>
+                © 2024 Nepal Health Hospital. All rights reserved.
+            </div>
+            <div>
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-logos">
+                <span style="font-size: 24px; margin-right: var(--space-2);">💳</span>
+                <span style="font-size: 24px; margin-right: var(--space-2);">💳</span>
+                <span style="font-size: 24px;">💳</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Emergency Button (Mobile) -->
+    <button class="emergency-button-mobile" aria-label="Call Emergency">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#FFFFFF"/>
+        </svg>
+    </button>
+
+    <script>
+        // Mobile tab bar functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileTabItems = document.querySelectorAll('.mobile-tab-bar .tab-item');
+
+            mobileTabItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    mobileTabItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Highlight current page in mobile tab bar
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            mobileTabItems.forEach(item => {
+                const link = item.querySelector('a');
+                if (link && link.getAttribute('href') === currentPath) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

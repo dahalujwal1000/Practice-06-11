@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Appointments - Nepal Health Hospital</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .appointments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+        .tabs-container {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: var(--space-6);
+        }
+        .tab {
+            padding: var(--space-2) var(--space-4);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+        }
+        .tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .appointment-card {
+            background-color: var(--surface);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-standard);
+            padding: var(--space-4);
+            margin-bottom: var(--space-4);
+            display: flex;
+            gap: var(--space-4);
+            align-items: flex-start;
+        }
+        .appointment-doctor-info {
+            flex: 1;
+        }
+        .appointment-time {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            margin: var(--space-2) 0;
+        }
+        .appointment-actions {
+            display: flex;
+            gap: var(--space-2);
+            margin-top: auto;
+        }
+        .status-badge {
+            padding: var(--space-0) var(--space-2);
+            border-radius: var(--radius-pill);
+            font-size: var(--body-sm);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .status-upcoming {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+        .status-completed {
+            background-color: #dcfce7; /* green-100 */
+            color: var(--success);
+        }
+        .status-cancelled {
+            background-color: #fee2e2; /* red-100 */
+            color: var(--emergency);
+        }
+        .empty-state {
+            text-align: center;
+            padding: var(--space-8) var(--space-4);
+        }
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-4);
+            color: #E5E7EB; /* gray-300 */
+        }
+        .quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-4);
+            margin-top: var(--space-6);
+        }
+        .mobile-tab-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: var(--surface);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 1000;
+        }
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-body);
+            font-size: var(--body-sm);
+            text-decoration: none;
+        }
+        .tab-item.active {
+            color: var(--primary);
+        }
+        .tab-icon {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <span>Nepal Health</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#0891B2"/>
+                </svg>
+            </div>
+            <nav class="navbar-menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="departments.html">Departments</a>
+                <a href="find-doctor.html">Doctors</a>
+                <a href="services.html">Services</a>
+                <a href="health-packages.html">Packages</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="navbar-actions">
+                <div class="language-switcher">
+                    EN
+                    <span>|</span>
+                    नेपाली
+                </div>
+                <a href="appointment-booking.html" class="btn btn-primary">Book Appointment</a>
+                <div class="emergency-phone">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#EF4444"/>
+                    </svg>
+                    <span>+977-1-5970032</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Tab Bar (hidden on desktop) -->
+    <div class="mobile-tab-bar">
+        <a href="patient-dashboard.html" class="tab-item active">
+            <div class="tab-icon">🏠</div>
+            <div>Home</div>
+        </a>
+        <a href="find-doctor.html" class="tab-item">
+            <div class="tab-icon">👨‍⚕️</div>
+            <div>Doctors</div>
+        </a>
+        <a href="appointments-list.html" class="tab-item active">
+            <div class="tab-icon">📅</div>
+            <div>Appointments</div>
+        </a>
+        <a href="lab-reports.html" class="tab-item">
+            <div class="tab-icon">📋</div>
+            <div>Reports</div>
+        </a>
+        <a href="profile.html" class="tab-item">
+            <div class="tab-icon">👤</div>
+            <div>Profile</div>
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container" style="max-width: 1440px; margin: 0 auto; padding: var(--space-4);">
+            <div class="appointments-header">
+                <h2>My Appointments</h2>
+                <a href="appointment-booking.html" class="btn btn-primary">Book New Appointment</a>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs-container">
+                <div class="tab active" data-tab="upcoming">Upcoming</div>
+                <div class="tab" data-tab="past">Past</div>
+                <div class="tab" data-tab="cancelled">Cancelled</div>
+            </div>
+
+            <!-- Upcoming Appointments Tab -->
+            <div class="tab-content active" id="upcoming-tab">
+                <!-- Appointment Card -->
+                <div class="appointment-card">
+                    <div class="appointment-image">
+                        <img src="assets/images/doctor1.jpg" alt="Dr. Ramesh Sharma" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <div class="appointment-details">
+                        <h4>Cardiology Consultation</h4>
+                        <p class="doctor-name">Dr. Ramesh Sharma</p>
+                        <div class="appointment-time">
+                            <span class="appointment-icon">🕐</span>
+                            <span>Today, 10:30 AM</span>
+                        </div>
+                        <div class="appointment-time">
+                            <span class="appointment-icon">📍</span>
+                            <span>Cardiology Department, 2nd Floor</span>
+                        </div>
+                        <span class="status-badge status-upcoming">Upcoming</span>
+                    </div>
+                    <div class="appointment-actions">
+                        <a href="#" class="btn btn-outline">Reschedule</a>
+                        <a href="#" class="btn btn-danger">Cancel</a>
+                    </div>
+                </div>
+
+                <!-- Appointment Card -->
+                <div class="appointment-card">
+                    <div class="appointment-image">
+                        <img src="assets/images/doctor2.jpg" alt="Dr. Sita Devi" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <div class="appointment-details">
+                        <h4>Neurology Consultation</h4>
+                        <p class="doctor-name">Dr. Sita Devi</p>
+                        <div class="appointment-time">
+                            <span class="appointment-icon">🕐</span>
+                            <span>Tomorrow, 2:00 PM</span>
+                        </div>
+                        <div class="appointment-time">
+                            <span class="appointment-icon">📍</span>
+                            <span>Neurology Department, 3rd Floor</span>
+                        </div>
+                        <span class="status-badge status-upcoming">Upcoming</span>
+                    </div>
+                    <div

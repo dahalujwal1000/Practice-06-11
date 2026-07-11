@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify OTP - Nepal Health Hospital</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .auth-container {
+            max-width: 450px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .auth-card {
+            background-color: var(--surface);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-standard);
+            overflow: hidden;
+        }
+        .auth-header {
+            background-color: var(--background);
+            padding: var(--space-6);
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .auth-header img {
+            max-width: 120px;
+            margin-bottom: var(--space-3);
+        }
+        .auth-header h2 {
+            margin-bottom: var(--space-2);
+            color: var(--primary);
+        }
+        .auth-body {
+            padding: var(--space-6);
+        }
+        .otp-inputs {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-2);
+            margin: var(--space-4) 0;
+        }
+        .otp-input {
+            width: 48px;
+            height: 48px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-card);
+            background-color: var(--surface);
+            color: var(--text-heading);
+        }
+        .otp-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+        .otp-input::-webkit-outer-spin-button,
+        .otp-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .otp-input[type=number] {
+            -moz-appearance: textfield;
+        }
+        .resend-otp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: var(--space-4);
+            color: var(--text-body);
+        }
+        .resend-otp span {
+            margin-right: var(--space-2);
+            font-weight: 500;
+        }
+        .resend-otp .countdown {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .footer-text {
+            text-align: center;
+            margin-top: var(--space-4);
+            color: var(--text-body);
+            font-size: var(--body-sm);
+        }
+        .footer-text a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-3);
+            margin-top: var(--space-4);
+            flex-wrap: wrap;
+        }
+        .badge {
+            background-color: var(--background);
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-card);
+            font-size: var(--body-sm);
+            border: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (simplified for auth pages) -->
+    <header>
+        <div class="navbar">
+            <div class="navbar-logo">
+                <span>Nepal Health</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#0891B2"/>
+                </svg>
+            </div>
+            <div class="navbar-actions">
+                <div class="language-switcher">
+                    EN
+                    <span>|</span>
+                    नेपाली
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <img src="assets/images/logo.svg" alt="Nepal Health Hospital Logo" onerror="this.style.display='none'">
+                    <h2>Verify OTP</h2>
+                    <p>Enter the 6-digit code sent to your mobile number</p>
+                </div>
+
+                <div class="auth-body">
+                    <div class="otp-info">
+                        <p>We've sent a verification code to <strong>+977-98XXXXXXXX</strong></p>
+                        <p class="resend-otp">
+                            <span>Didn't receive the code?</span>
+                            <span class="countdown" id="resendCountdown">00:30</span>
+                        </p>
+                    </div>
+
+                    <div class="otp-inputs">
+                        <input type="number" class="otp-input" inputmode="numeric" maxlength="1" autocomplete="one-time-code">
+                        <input type="number" class="otp-input" inputmode="numeric" maxlength="1" autocomplete="one-time-code">
+                        <input type="number" class="otp-input" inputmode="numeric" maxlength="1" autocomplete="one-time-code">
+                        <input type="number" class="otp-input" inputmode="numeric" maxlength="1" autocomplete="one-time-code">
+                        <input type="number" class="otp-input" inputmode="numeric" maxlength="1" autocomplete="one-time-code">
+                        <input type="number" class="otp-input" inputmode="numeric" maxlength="1" autocomplete="one-time-code">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100" id="verifyOTPBtn">Verify & Login</button>
+
+                    <div class="footer-text">
+                        <p>Having trouble? <a href="#">Try another method</a></p>
+                    </div>
+
+                    <div class="security-badges" style="margin-top: var(--space-4);">
+                        <span class="badge">SSL Secure</span>
+                        <span class="badge">HIPAA Compliant</span>
+                        <span class="badge">Data Encrypted</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (simplified) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col" style="text-align: center;">
+                <div class="footer-logo">
+                    <span>Nepal Health</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#CFFAFE"/>
+                    </svg>
+                </div>
+                <p style="margin-top: var(--space-3);">Nepal Health Hospital is committed to providing exceptional healthcare services to the community.</p>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align: center;">
+            <div>
+                © 2024 Nepal Health Hospital. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Emergency Button (Mobile) -->
+    <button class="emergency-button-mobile" aria-label="Call Emergency">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 5a2 2 0 012-2h3.586a1 1 0 01.707.293l2.414 2.414a1 1 0 01.293.707V19a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" fill="#FFFFFF"/>
+        </svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const otpInputs = document.querySelectorAll('.otp-input');
+            const verifyOTPBtn = document.getElementById('verifyOTPBtn');
+            const resendCountdown = document.getElementById('resendCountdown');
+
+            // Auto-focus first input
+            otpInputs[0].focus();
+
+            // Handle OTP input navigation
+            otpInputs.forEach((input, index) => {
+                input.addEventListener('keyup', function(e) {
+                    if (e.target.value.length === 1 && index < otpInputs.length - 1) {
+                        otpInputs[index + 1].focus();
+                    }
+
+                    if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
+                        otpInputs[index - 1].focus();
+                    }
+
+                });
+
+                input.addEventListener('paste', function(e) {
+                    e.preventDefault();
+                    const pastedData = e.clipboardData.getData('text');
+                    if (/^\d{6}$/.test(pastedData)) {
+                        otpInputs.forEach((inp, i) => {
+                            inp.value = pastedData[i] || '';
+                        });
+                        // Focus on last input or submit button
+                        otpInputs[otpInputs.length - 1].focus();
+                    }
+                });
+            });
+
+            // Enable verify button when all OTP fields are filled
+            function checkOTPComplete() {
+                const allFilled = Array.from(otpInputs).every(input => input.value.length === 1);
+                verifyOTPBtn.disabled = !allFilled;
+                if (allFilled) {
+                    verifyOTPBtn.style.opacity = '1';
+                } else {
+                    verifyOTPBtn.style.opacity = '0.5';
+                }
+            }
+
+            otpInputs.forEach(input => {
+                input.addEventListener('input', checkOTPComplete);
+            });
+
+            // Initial check
+            checkOTPComplete();
+
+            // Verify OTP button click
+            verifyOTPBtn.addEventListener('click', function() {
+                const otpCode = Array.from(otpInputs).map(input => input.value).join('');
+
+                if (otpCode.length !== 6) {
+                    alert('Please enter a valid 6-digit OTP');
+                    return;
+                }
+
+                // Simulate OTP verification
+                // In a real app, you would send this to your backend
+                alert('OTP verified successfully! Redirecting to dashboard...');
+
+                // For demo purposes, redirect to patient dashboard
+                window.location.href = 'patient-dashboard.html';
+            });
+
+            // Resend OTP countdown
+            let seconds = 30;
+            const countdownInterval = setInterval(() => {
+                seconds--;
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                resendCountdown.textContent = `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+
+                if (seconds <= 0) {
+                    clearInterval(countdownInterval);
+                    resendCountdown.textContent = 'Resend OTP';
+                    resendCountdown.style.color = var(--primary);
+                    resendCountdown.style.cursor = 'pointer';
+                    // In a real app, you would add click listener to resend OTP
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
